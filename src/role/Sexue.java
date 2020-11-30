@@ -1,5 +1,5 @@
 package role;
 
-public class Sexue extends Role {
-
+abstract public class Sexue extends Role {
+	
 }
