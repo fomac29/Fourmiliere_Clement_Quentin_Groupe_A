@@ -7,9 +7,13 @@ package etape;
  */
 public class Oeuf extends Etape {
 
-	@Override
 	public Etape next() {
 		return new Larve();
+	}
+
+	@Override
+	public void step() {
+		this.next();
 	}
 
 }

@@ -1,5 +1,5 @@
 package etape;
 
 public abstract class Etape {
-	public abstract Etape next();
+	public abstract void step();
 }

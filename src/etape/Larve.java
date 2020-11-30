@@ -6,9 +6,13 @@ package etape;
  *
  */
 public class Larve extends Etape {
-	@Override
+	
 	public Etape next() {
 		return new Nymphe();
 	}
 
+	@Override
+	public void step() {
+		this.next();
+	}
 }
