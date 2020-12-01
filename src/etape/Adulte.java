@@ -7,9 +7,4 @@ package etape;
  */
 public class Adulte extends Etape {
 
-	@Override
-	public Etape next() {
-		return this;
-	}
-
 }
