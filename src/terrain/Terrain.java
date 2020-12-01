@@ -22,4 +22,14 @@ public class Terrain {
   public void step() {
     this.laFourmiliere.step();
   }
+
+  public Fourmiliere getLaFourmiliere() {
+    return laFourmiliere;
+  }
+
+  public void setLaFourmiliere(Fourmiliere laFourmiliere) {
+    this.laFourmiliere = laFourmiliere;
+  }
+  
+  
 }

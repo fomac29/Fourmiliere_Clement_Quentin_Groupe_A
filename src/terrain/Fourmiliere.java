@@ -22,8 +22,8 @@ public class Fourmiliere {
   }
 
   public void step() {
-    for (Fourmi uneFoumi : this.lesFourmis) {
-      uneFoumi.step();
+    for (int i = 0; i < this.lesFourmis.size(); i++) {
+      this.lesFourmis.get(i).step();
     }
   }
 
