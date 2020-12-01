@@ -9,17 +9,25 @@ public class Terrain {
   
   public Terrain() {
     Fourmi reine = new Fourmi();
-    
-    Adulte adulte = new Adulte(reine);
+    this.laFourmiliere = new Fourmiliere(reine);
+    reine.setLaFourmiliere(laFourmiliere);
+    Adulte adulte = new Adulte();
+    adulte.setLaFourmi(reine);
+    // La reine étant une femelle, il faut l'incrémenter
+    this.laFourmiliere.incrementerNombreFemelles();
     adulte.setLeRole(new Reine(adulte));
     reine.setlEtape(adulte);
-    
-    this.laFourmiliere = new Fourmiliere(reine);
-    
-    reine.setLaFourmiliere(laFourmiliere);
   }
 
   public void step() {
     this.laFourmiliere.step();
+  }
+
+  public Fourmiliere getLaFourmiliere() {
+    return laFourmiliere;
+  }
+
+  public void setLaFourmiliere(Fourmiliere laFourmiliere) {
+    this.laFourmiliere = laFourmiliere;
   }
 }

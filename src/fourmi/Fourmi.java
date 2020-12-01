@@ -11,7 +11,7 @@ public class Fourmi {
   public Fourmi() {
     this.lEtape = new Oeuf(this);
   }
-
+  
   public void step() {
     this.lEtape.step();
   }
@@ -31,7 +31,4 @@ public class Fourmi {
   public void setLaFourmiliere(Fourmiliere laFourmiliere) {
     this.laFourmiliere = laFourmiliere;
   }
-  
-  
-  
 }

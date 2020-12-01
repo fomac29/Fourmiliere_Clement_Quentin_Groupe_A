@@ -9,11 +9,13 @@ import fourmi.Fourmi;
  *
  */
 public class Oeuf extends Etape {
+  
+  private int tempsRestant = 3;
+  
   public Oeuf(Fourmi uneFourmi) {
     super(uneFourmi);
   }
 
-  int tempsRestant = 3;
 
   public void next() {
     this.tempsRestant = this.tempsRestant - 1;
