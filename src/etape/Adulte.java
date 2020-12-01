@@ -1,7 +1,7 @@
 package etape;
 
 /**
- * Quatrième et étape de la vie d'une foumi
+ * Quatrième et étape de la vie d'une fourmi
  * @author Clément Stoliaroff
  *
  */
