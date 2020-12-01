@@ -28,7 +28,7 @@ public class Adulte extends Etape {
 			this.leRole = new Ouvrier();
 		}
 		
-		// Même chose entre 20% et 25%
+		// Même chose entre 20% et 25% pour les fourmis soldats
 		else if(Math.random() <= this.pourcentageDeChance(0.2, 0.25)) {
 			this.leRole = new Soldat();
 		}
