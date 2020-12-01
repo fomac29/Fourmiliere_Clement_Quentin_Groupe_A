@@ -28,24 +28,24 @@ public class Adulte extends Etape {
      * celui-ci est inférieur ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
      */
     if (Math.random() <= this.pourcentageDeChance(0.6, 0.7)) {
-      this.leRole = new Ouvrier(super.laFourmi);
+      this.leRole = new Ouvrier(this);
     }
 
     // Même chose entre 20% et 25% pour les fourmis soldats
     else if (Math.random() <= this.pourcentageDeChance(0.2, 0.25)) {
-      this.leRole = new Soldat(super.laFourmi);
+      this.leRole = new Soldat(this);
     }
 
     // Sinon, c'est une fourmi sexué
     else {
       // La fourmi a 50% de chance d'être une femelle
       if (Math.random() <= 0.5) {
-        this.leRole = new Femelle(super.laFourmi);
+        this.leRole = new Femelle(this);
       }
 
       // Sinon c'est un mâle
       else {
-        this.leRole = new Male(super.laFourmi);
+        this.leRole = new Male(this);
       }
     }
   }

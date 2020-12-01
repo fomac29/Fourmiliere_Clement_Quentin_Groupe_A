@@ -2,12 +2,15 @@ package fourmi;
 
 import etape.Etape;
 import etape.Oeuf;
+import terrain.Fourmiliere;
 
 public class Fourmi {
   Etape lEtape;
+  Fourmiliere laFourmiliere;
 
-  public Fourmi() {
+  public Fourmi(Fourmiliere uneFourmiliere) {
     this.lEtape = new Oeuf(this);
+    this.laFourmiliere = uneFourmiliere;
   }
 
   public void step() {

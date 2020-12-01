@@ -26,5 +26,4 @@ public class Oeuf extends Etape {
   public void step() {
     this.next();
   }
-
 }
