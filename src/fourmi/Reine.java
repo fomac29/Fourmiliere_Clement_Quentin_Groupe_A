@@ -19,5 +19,6 @@ public class Reine extends Femelle {
     Fourmi laFourmi = new Fourmi();
     laFourmi.setLaFourmiliere(fourmiliere);
     fourmiliere.ajouterFourmi(laFourmi);
+    fourmiliere.incrementerNombreOeufs();
   }
 }

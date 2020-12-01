@@ -8,6 +8,10 @@ public abstract class Etape {
   public Etape(Fourmi uneFourmi) {
     this.laFourmi = uneFourmi;
   }
+  
+  public Etape() {
+    this.laFourmi = null;
+  }
 
   public Fourmi getLaFourmi() {
     return laFourmi;

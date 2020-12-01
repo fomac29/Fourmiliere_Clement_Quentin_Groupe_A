@@ -23,7 +23,7 @@ public class Adulte extends Etape {
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
     
-    super.laFourmi.getLaFourmiliere().decrementerNombreNymphes();
+    this.laFourmi.getLaFourmiliere().decrementerNombreNymphes();
     
     /*
      * On tire un pourcentage entre 60% et 70% au hasard Puis on tire un nombre au hasard : si
@@ -56,6 +56,10 @@ public class Adulte extends Etape {
     }
   }
 
+  public Adulte() {
+    super();
+  }
+
   public Role getLeRole() {
     return leRole;
   }
@@ -68,4 +72,6 @@ public class Adulte extends Etape {
   public void step() {
     this.leRole.step();
   }
+  
+  
 }

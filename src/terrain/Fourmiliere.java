@@ -6,6 +6,7 @@ import fourmi.Fourmi;
 
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
+  Fourmi laReineDesFourmis;
 
   private int nombreOeufs = 0;
   private int nombreLarves = 0;
@@ -17,13 +18,14 @@ public class Fourmiliere {
 
   public Fourmiliere(Fourmi reine) {
     this.lesFourmis = new ArrayList<Fourmi>();
-    this.lesFourmis.add(reine);
+    this.laReineDesFourmis = reine;
   }
 
   public void step() {
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
     }
+    this.laReineDesFourmis.step();
   }
 
   public void ajouterFourmi(Fourmi uneFourmi) {
