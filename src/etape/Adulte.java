@@ -24,7 +24,6 @@ public class Adulte extends Etape {
 		 *  Puis on tire un nombre au hasard : si celui-ci est inférieur
 		 *  ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
 		 */
-		
 		if(Math.random() <= this.pourcentageDeChance(0.6, 0.7)) {
 			this.leRole = new Ouvrier();
 		}
