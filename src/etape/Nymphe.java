@@ -19,6 +19,8 @@ public class Nymphe extends Etape {
     this.tempsRestant = this.tempsRestant - 1;
     if (this.tempsRestant == 0) {
       super.laFourmi.setlEtape(new Adulte(super.laFourmi));
+      super.laFourmi.getLaFourmiliere().incrementerNombreNymphes();
+      super.laFourmi.getLaFourmiliere().decrementerNombreLarves();
     }
   }
 

@@ -2,19 +2,18 @@ package terrain;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import etape.Adulte;
-import etape.Etape;
-import etape.Larve;
-import etape.Nymphe;
-import etape.Oeuf;
 import fourmi.Fourmi;
-import fourmi.Male;
-import fourmi.Ouvrier;
-import fourmi.Role;
 
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
+
+  private int nombreOeufs = 0;
+  private int nombreLarves = 0;
+  private int nombreNymphes = 0;
+  private int nombreOuvriers = 0;
+  private int nombreSoldats = 0;
+  private int nombreMales = 0;
+  private int nombreFemelles = 0;
 
   public Fourmiliere(Fourmi reine) {
     this.lesFourmis = new ArrayList<Fourmi>();
@@ -31,55 +30,72 @@ public class Fourmiliere {
     this.lesFourmis.add(uneFourmi);
   }
 
+  public void incrementerNombreOeufs() {
+    this.nombreOeufs++;
+  }
+
+  public void decrementerNombreOeufs() {
+    this.nombreOeufs--;
+  }
+
+  public void incrementerNombreLarves() {
+    this.nombreLarves++;
+  }
+
+  public void decrementerNombreLarves() {
+    this.nombreLarves--;
+  }
+
+  public void incrementerNombreNymphes() {
+    this.nombreNymphes++;
+  }
+
+  public void decrementerNombreNymphes() {
+    this.nombreNymphes--;
+  }
+
+  public void incrementerNombreOuvriers() {
+    this.nombreOuvriers++;
+  }
+
+  public void decrementerNombreOuvriers() {
+    this.nombreOuvriers--;
+  }
+
+  public void incrementerNombreSoldats() {
+    this.nombreSoldats++;
+  }
+
+  public void decrementerNombreSoldats() {
+    this.nombreSoldats--;
+  }
+
+  public void incrementerNombreMales() {
+    this.nombreMales++;
+  }
+
+  public void decrementerNombreMales() {
+    this.nombreMales--;
+  }
+
+  public void incrementerNombreFemelles() {
+    this.nombreFemelles++;
+  }
+
+  public void decrementerNombreFemelles() {
+    this.nombreFemelles--;
+  }
+
   @Override
   public String toString() {
-    int nombreOeuf = 0;
-    int nombreLarve = 0;
-    int nombreNymphe = 0;
-    int nombreOuvrier = 0;
-    int nombreSoldats = 0;
-    int nombreMale = 0;
-    int nombreFemelle = 0;
-
-    for (Fourmi uneFoumi : this.lesFourmis) {
-      Etape lEtape = uneFoumi.getlEtape();
-      if (lEtape instanceof Oeuf) {
-        nombreOeuf++;
-      }
-
-      else if (lEtape instanceof Larve) {
-        nombreLarve++;
-      }
-
-      else if (lEtape instanceof Nymphe) {
-        nombreNymphe++;
-      }
-
-      else {
-        Role leRole = ((Adulte) lEtape).getLeRole();
-
-        if (leRole instanceof Ouvrier) {
-          nombreOuvrier++;
-        }
-
-        else if (leRole instanceof Male) {
-          nombreMale++;
-        }
-
-        else {
-          nombreFemelle++;
-        }
-      }
-    }
-
     String res = "Fourmilière :";
-    res += "\n\t- Nombre d'oeufs : " + nombreOeuf;
-    res += "\n\t- Nombre de larves : " + nombreLarve;
-    res += "\n\t- Nombre de nymphes : " + nombreNymphe;
-    res += "\n\t- Nombre d'ouvrières : " + nombreOuvrier;
-    res += "\n\t- Nombre de soldats : " + nombreSoldats;
-    res += "\n\t- Nombre de mâles : " + nombreMale;
-    res += "\n\t- Nombre de femelles : " + nombreFemelle;
+    res += "\n\t- Nombre d'oeufs : " + this.nombreOeufs;
+    res += "\n\t- Nombre de larves : " + this.nombreLarves;
+    res += "\n\t- Nombre de nymphes : " + this.nombreNymphes;
+    res += "\n\t- Nombre d'ouvrières : " + this.nombreOuvriers;
+    res += "\n\t- Nombre de soldats : " + this.nombreSoldats;
+    res += "\n\t- Nombre de mâles : " + this.nombreMales;
+    res += "\n\t- Nombre de femelles : " + this.nombreFemelles;
 
     return res;
   }

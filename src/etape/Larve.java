@@ -20,6 +20,8 @@ public class Larve extends Etape {
     this.tempsRestant = this.tempsRestant - 1;
     if (this.tempsRestant == 0) {
       super.laFourmi.setlEtape(new Nymphe(super.laFourmi));
+      super.laFourmi.getLaFourmiliere().incrementerNombreLarves();
+      super.laFourmi.getLaFourmiliere().decrementerNombreOeufs();
     }
   }
 
