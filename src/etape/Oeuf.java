@@ -6,9 +6,15 @@ package etape;
  *
  */
 public class Oeuf extends Etape {
-
+	int tempsRestant = 3;
+	
 	public Etape next() {
-		return new Larve();
+		this.tempsRestant = this.tempsRestant - 1;
+		if(this.tempsRestant == 0) {
+			return new Larve();
+		}
+		
+		return this;
 	}
 
 	@Override
