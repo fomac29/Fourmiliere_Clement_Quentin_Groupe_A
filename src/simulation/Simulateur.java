@@ -4,6 +4,10 @@ import terrain.Terrain;
 
 public class Simulateur {
   Terrain leTerrain;
+  
+  public Simulateur() {
+    this.leTerrain = new Terrain();
+  }
 
   public void step() {
     this.leTerrain.step();
