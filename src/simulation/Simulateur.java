@@ -9,12 +9,9 @@ public class Simulateur {
     this.leTerrain = new Terrain();
   }
 
-  public void step() {
-    this.leTerrain.step();
-  }
-
   public void demarrer() {
     while (true) {
+      System.out.println(this.leTerrain.getLaFourmiliere().toString());
       this.leTerrain.step();
       try {
         Thread.sleep(1000);
