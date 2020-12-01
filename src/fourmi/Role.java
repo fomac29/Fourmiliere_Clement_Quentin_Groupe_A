@@ -1,5 +1,11 @@
 package fourmi;
 
 public abstract class Role {
-	public abstract void step();
+  Fourmi laFourmi;
+
+  public Role(Fourmi uneFourmi) {
+    this.laFourmi = uneFourmi;
+  }
+
+  public abstract void step();
 }

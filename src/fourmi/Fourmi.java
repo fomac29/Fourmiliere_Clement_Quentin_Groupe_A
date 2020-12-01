@@ -4,22 +4,21 @@ import etape.Etape;
 import etape.Oeuf;
 
 public class Fourmi {
-	Etape lEtape;
-	
-	public Fourmi() {
-		this.lEtape = new Oeuf();
-	}
+  Etape lEtape;
 
-	public void step() {
-		this.lEtape.step();
-	}
+  public Fourmi() {
+    this.lEtape = new Oeuf(this);
+  }
 
-	public Etape getlEtape() {
-		return lEtape;
-	}
+  public void step() {
+    this.lEtape.step();
+  }
 
-	public void setlEtape(Etape lEtape) {
-		this.lEtape = lEtape;
-	}
-	
+  public Etape getlEtape() {
+    return lEtape;
+  }
+
+  public void setlEtape(Etape lEtape) {
+    this.lEtape = lEtape;
+  }
 }

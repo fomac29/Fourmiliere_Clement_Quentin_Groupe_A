@@ -2,9 +2,13 @@ package fourmi;
 
 public class Ouvrier extends Role {
 
-	@Override
-	public void step() {
-		
-	}
+  public Ouvrier(Fourmi uneFourmi) {
+    super(uneFourmi);
+  }
+
+  @Override
+  public void step() {
+
+  }
 
 }

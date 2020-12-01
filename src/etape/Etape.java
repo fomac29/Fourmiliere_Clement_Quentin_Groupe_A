@@ -1,5 +1,13 @@
 package etape;
 
+import fourmi.Fourmi;
+
 public abstract class Etape {
-	public abstract void step();
+  Fourmi laFourmi;
+
+  public Etape(Fourmi uneFourmi) {
+    this.laFourmi = uneFourmi;
+  }
+
+  public abstract void step();
 }

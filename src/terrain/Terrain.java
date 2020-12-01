@@ -1,9 +1,9 @@
 package terrain;
 
 public class Terrain {
-	Fourmiliere laFourmiliere;
+  Fourmiliere laFourmiliere;
 
-	public void step() {
-		this.laFourmiliere.step();
-	}
+  public void step() {
+    this.laFourmiliere.step();
+  }
 }
