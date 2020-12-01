@@ -1,6 +1,6 @@
 package role;
 
-public class Soldat extends Role {
+public class Femelle extends Sexue {
 
 	@Override
 	public void step() {

@@ -1,10 +1,8 @@
 package role;
 
-public class Soldat extends Role {
-
+public class Reine extends Femelle {
 	@Override
 	public void step() {
 		
 	}
-
 }
