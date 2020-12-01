@@ -47,6 +47,14 @@ public class Adulte extends Etape {
 		}
 	}
 
+	public Role getLeRole() {
+		return leRole;
+	}
+
+	public void setLeRole(Role leRole) {
+		this.leRole = leRole;
+	}
+
 	@Override
 	public void step() {
 		this.leRole.step();
