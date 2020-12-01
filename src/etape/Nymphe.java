@@ -6,9 +6,15 @@ package etape;
  *
  */
 public class Nymphe extends Etape {
+	int tempsRestant = 10;
 
 	public Etape next() {
-		return new Adulte();
+		this.tempsRestant = this.tempsRestant - 1;
+		if(this.tempsRestant == 0) {
+			return new Adulte();
+		}
+		
+		return this;
 	}
 	
 	@Override
