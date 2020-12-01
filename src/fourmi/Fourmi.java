@@ -2,24 +2,26 @@ package fourmi;
 
 import etape.Etape;
 import etape.Oeuf;
+import terrain.Fourmiliere;
 
 public class Fourmi {
-	Etape lEtape;
-	
-	public Fourmi() {
-		this.lEtape = new Oeuf();
-	}
+  Etape lEtape;
+  Fourmiliere laFourmiliere;
 
-	public void step() {
-		this.lEtape.step();
-	}
+  public Fourmi(Fourmiliere uneFourmiliere) {
+    this.lEtape = new Oeuf(this);
+    this.laFourmiliere = uneFourmiliere;
+  }
 
-	public Etape getlEtape() {
-		return lEtape;
-	}
+  public void step() {
+    this.lEtape.step();
+  }
 
-	public void setlEtape(Etape lEtape) {
-		this.lEtape = lEtape;
-	}
-	
+  public Etape getlEtape() {
+    return lEtape;
+  }
+
+  public void setlEtape(Etape lEtape) {
+    this.lEtape = lEtape;
+  }
 }
