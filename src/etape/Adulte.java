@@ -47,8 +47,8 @@ public class Adulte extends Etape {
 		}
 	}
 
-		this.leRole.step();
-	public void step() {
 	@Override
+	public void step() {
+		this.leRole.step();
 	}
 }
