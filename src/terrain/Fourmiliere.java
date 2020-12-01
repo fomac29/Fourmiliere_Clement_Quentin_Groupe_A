@@ -3,7 +3,7 @@ package terrain;
 import java.util.ArrayList;
 import java.util.List;
 
-import role.Fourmi;
+import fourmi.Fourmi;
 
 public class Fourmiliere {
 	List<Fourmi> lesFourmis;

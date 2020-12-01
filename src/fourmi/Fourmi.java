@@ -1,4 +1,4 @@
-package role;
+package fourmi;
 
 import etape.Etape;
 import etape.Oeuf;

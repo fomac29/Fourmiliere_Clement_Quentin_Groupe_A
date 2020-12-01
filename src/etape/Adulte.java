@@ -1,10 +1,10 @@
 package etape;
 
-import role.Femelle;
-import role.Male;
-import role.Ouvrier;
-import role.Role;
-import role.Soldat;
+import fourmi.Femelle;
+import fourmi.Male;
+import fourmi.Ouvrier;
+import fourmi.Role;
+import fourmi.Soldat;
 
 /**
  * Quatrième et étape de la vie d'une fourmi
