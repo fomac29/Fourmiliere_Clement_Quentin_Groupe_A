@@ -3,20 +3,24 @@ package simulation;
 import terrain.Terrain;
 
 public class Simulateur {
-	Terrain leTerrain;
+  Terrain leTerrain;
+  
+  public Simulateur() {
+    this.leTerrain = new Terrain();
+  }
 
-	public void step() {
-		this.leTerrain.step();
-	}
+  public void step() {
+    this.leTerrain.step();
+  }
 
-	public void demarrer() {
-		while(true) {
-			this.leTerrain.step();
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace(); 
-			}
-		}
-	}
+  public void demarrer() {
+    while (true) {
+      this.leTerrain.step();
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 }

@@ -1,20 +1,23 @@
 package fourmi;
 
+import etape.Adulte;
 import terrain.Fourmiliere;
 
 public class Reine extends Femelle {
-	Fourmiliere laFourmiliere;
-	
-	public Reine(Fourmiliere uneFourmiliere) {
-		this.laFourmiliere = uneFourmiliere;
-	}
 
-	@Override
-	public void step() {
-		this.pondre();
-	}
-	
-	public void pondre() {
-		this.laFourmiliere.ajouterFourmi(new Fourmi());
-	}
+  public Reine(Adulte lAdulte) {
+    super(lAdulte);
+  }
+
+  @Override
+  public void step() {
+    this.pondre();
+  }
+
+  protected void pondre() {
+    Fourmiliere fourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
+    Fourmi laFourmi = new Fourmi();
+    laFourmi.setLaFourmiliere(fourmiliere);
+    fourmiliere.ajouterFourmi(laFourmi);
+  }
 }
