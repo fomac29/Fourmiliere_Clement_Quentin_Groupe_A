@@ -1,4 +1,4 @@
-package role;
+package fourmi;
 
 public class Femelle extends Sexue {
 
