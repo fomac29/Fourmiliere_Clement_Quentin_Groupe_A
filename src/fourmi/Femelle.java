@@ -4,8 +4,8 @@ import etape.Adulte;
 
 public class Femelle extends Sexue {
 
-  public Femelle(Fourmi uneFourmi) {
-    super(uneFourmi);
+  public Femelle(Adulte adulte) {
+    super(adulte);
   }
 
   @Override
@@ -14,6 +14,6 @@ public class Femelle extends Sexue {
   }
 
   public void devenirReine() {
-    ((Adulte) super.laFourmi.getlEtape()).setLeRole(new Reine(super.laFourmi));
+    super.lAdulte.setLeRole(new Reine(super.lAdulte));
   }
 }

@@ -9,5 +9,13 @@ public abstract class Etape {
     this.laFourmi = uneFourmi;
   }
 
+  public Fourmi getLaFourmi() {
+    return laFourmi;
+  }
+
+  public void setLaFourmi(Fourmi laFourmi) {
+    this.laFourmi = laFourmi;
+  }
+
   public abstract void step();
 }

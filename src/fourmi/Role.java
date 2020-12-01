@@ -1,10 +1,20 @@
 package fourmi;
 
-public abstract class Role {
-  Fourmi laFourmi;
+import etape.Adulte;
 
-  public Role(Fourmi uneFourmi) {
-    this.laFourmi = uneFourmi;
+public abstract class Role {
+  Adulte lAdulte;
+
+  public Role(Adulte adulte) {
+    this.lAdulte = adulte;
+  }
+
+  public Adulte getlAdulte() {
+    return lAdulte;
+  }
+
+  public void setlAdulte(Adulte lAdulte) {
+    this.lAdulte = lAdulte;
   }
 
   public abstract void step();

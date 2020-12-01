@@ -1,18 +1,19 @@
 package fourmi;
 
+import etape.Adulte;
 import terrain.Fourmiliere;
 
 public class Reine extends Femelle {
   Fourmiliere laFourmiliere;
 
-  public Reine(Fourmi uneFourmi) {
-    super(uneFourmi);
+  public Reine(Adulte lAdulte) {
+    super(lAdulte);
     this.laFourmiliere = null;
   }
 
   public void creerFourmiliere() {
     if (this.laFourmiliere == null) {
-      this.laFourmiliere = new Fourmiliere(super.laFourmi);
+      this.laFourmiliere = new Fourmiliere(super.lAdulte.getLeRole().getlAdulte().getLaFourmi());
     }
   }
 
@@ -22,6 +23,6 @@ public class Reine extends Femelle {
   }
 
   protected void pondre() {
-    this.laFourmiliere.ajouterFourmi(new Fourmi());
+    this.laFourmiliere.ajouterFourmi(new Fourmi(laFourmiliere));
   }
 }

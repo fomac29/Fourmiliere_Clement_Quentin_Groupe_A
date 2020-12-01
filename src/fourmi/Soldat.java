@@ -1,9 +1,11 @@
 package fourmi;
 
+import etape.Adulte;
+
 public class Soldat extends Role {
 
-  public Soldat(Fourmi uneFourmi) {
-    super(uneFourmi);
+  public Soldat(Adulte adulte) {
+    super(adulte);
   }
 
   @Override
