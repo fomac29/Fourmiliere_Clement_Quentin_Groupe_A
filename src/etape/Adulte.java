@@ -74,8 +74,8 @@ public class Adulte extends Etape {
 
   public void ajouterFourmi() {
     composantGraphique = new GOval();
-    composantGraphique.setPosition(new Point(0,0));
-    composantGraphique.setDimension(new Dimension(5, 5));
+    composantGraphique.setPosition(new Point(247,247));
+    composantGraphique.setDimension(new Dimension(6, 6));
     composantGraphique.setColor(Color.yellow);
     
     VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
@@ -83,19 +83,39 @@ public class Adulte extends Etape {
   }
   
   public void deplacerFourmi() {
-    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
-    
     Random random = new Random();
-    int unNombreAleatoire = random.nextInt(2);
+    int unNombreAleatoire = random.nextInt(4);
     
     if(unNombreAleatoire == 0) {
-      int positionX = random.nextInt(laVueDuTerrain.getLargeurTerrain());
-      composantGraphique.setX(positionX);
-    }else {
-      int positionY = random.nextInt(laVueDuTerrain.getHauteurTerrain());
-      composantGraphique.setY(positionY);
+      int posX = this.getComposantGraphique().getX()+10;
+      if(this.verifierPosition(posX)) {
+        composantGraphique.setX(posX);
+      }
+    }else if(unNombreAleatoire == 1) {
+      int posX = this.getComposantGraphique().getX()-10;
+      if(this.verifierPosition(posX)) {
+        composantGraphique.setX(posX);
+      }
+    }else if(unNombreAleatoire == 2) {
+      int posY = this.getComposantGraphique().getY()+10;
+      if(this.verifierPosition(posY)) {
+        composantGraphique.setY(posY);
+      }
+    }else if(unNombreAleatoire == 3){
+      int posY = this.getComposantGraphique().getY()-10;
+      if(this.verifierPosition(posY)) {
+        composantGraphique.setY(posY);
+      }
     }
     
+  }
+  
+  public boolean verifierPosition(int pos) {
+    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
+    if(pos >= 0 && pos <= laVueDuTerrain.getHauteurTerrain()) {
+      return true;
+    }
+    return false;
   }
   
   public void supprimerFourmi() {

@@ -3,8 +3,6 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Random;
-import fourmi.Fourmi;
 import graphicLayer.GBounded;
 import graphicLayer.GOval;
 import graphicLayer.GRect;
@@ -22,7 +20,7 @@ public class VueTerrain {
   }
   
   public void InitialiserVue() {
-    fenetre = new GSpace("Terrain", new Dimension(800, 800));
+    fenetre = new GSpace("Terrain", new Dimension(550, 550));
     fenetre.open();
   }
   
@@ -30,7 +28,7 @@ public class VueTerrain {
     terrain = new GBounded();
     terrain.setColor(Color.GRAY);
     terrain.setPosition(new Point(30, 30));
-    terrain.setDimension(new Dimension(700, 700));
+    terrain.setDimension(new Dimension(500, 500));
     
     fenetre.addElement(terrain);
   }
@@ -38,8 +36,8 @@ public class VueTerrain {
   public void ajouterFourmiliere() {
     GRect fourmiliere = new GRect();
     fourmiliere.setColor(Color.BLACK);
-    fourmiliere.setPosition(new Point(0, 0));
-    fourmiliere.setDimension(new Dimension(30, 30));
+    fourmiliere.setPosition(new Point(245, 245));
+    fourmiliere.setDimension(new Dimension(10, 10));
     this.terrain.addElement(fourmiliere);
   }
   

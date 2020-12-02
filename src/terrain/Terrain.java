@@ -50,6 +50,10 @@ public class Terrain {
   public VueTerrain getLaVueTerrain() {
     return laVueTerrain;
   }
+
+  public int getJourCourant() {
+    return jourCourant;
+  }
   
   
 }
