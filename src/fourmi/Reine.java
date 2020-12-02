@@ -8,7 +8,6 @@ public class Reine extends Femelle {
   public Reine(Adulte lAdulte) {
     super(lAdulte);
     this.esperanceDeVie = (int) (Math.random() * (3650 - 1460)) + 1460;
-    System.out.println(this.esperanceDeVie);
   }
 
   @Override

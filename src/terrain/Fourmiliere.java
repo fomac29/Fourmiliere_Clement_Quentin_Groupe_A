@@ -1,5 +1,6 @@
 package terrain;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import fourmi.Fourmi;
@@ -7,7 +8,7 @@ import fourmi.Fourmi;
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
   Fourmi laReineDesFourmis;
-  
+
   Terrain leTerrain;
 
   private int nombreOeufs = 0;
@@ -21,15 +22,22 @@ public class Fourmiliere {
   private double pourcentageOuvriere;
   private double pourcentageSoldat;
 
+  /**
+   * Formatte arrondis les nombres décimaux à 2 chiffres après la virgule
+   */
+  private static DecimalFormat df2 = new DecimalFormat("#.##");
+
   public Fourmiliere(Fourmi reine) {
     this.lesFourmis = new ArrayList<Fourmi>();
     this.laReineDesFourmis = reine;
+    // La reine est une femelle
+    this.incrementerNombreFemelles();
     this.pourcentageOuvriere = (Math.random() * (0.7 - 0.6)) + 0.6;
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvriere + 0.25 - (pourcentageOuvriere + 0.2)))
             + (pourcentageOuvriere + 0.2);
   }
-  
+
   public Terrain getLeTerrain() {
     return leTerrain;
   }
@@ -46,13 +54,17 @@ public class Fourmiliere {
     return pourcentageSoldat;
   }
 
+  public List<Fourmi> getLesFourmis() {
+    return lesFourmis;
+  }
+
   public void step() {
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
     }
     // si la reine n'est pas morte
-    if(this.laReineDesFourmis != null) {
-      this.laReineDesFourmis.step(); 
+    if (this.laReineDesFourmis != null) {
+      this.laReineDesFourmis.step();
     }
   }
 
@@ -63,7 +75,7 @@ public class Fourmiliere {
   public void supprimerFourmi(Fourmi uneFourmi) {
     this.lesFourmis.remove(uneFourmi);
   }
-  
+
   public void supprimerReine() {
     this.laReineDesFourmis = null;
   }
@@ -124,18 +136,43 @@ public class Fourmiliere {
     this.nombreFemelles--;
   }
 
+  public int getNombreOeufs() {
+    return nombreOeufs;
+  }
+
+  public int getNombreLarves() {
+    return nombreLarves;
+  }
+
+  public int getNombreOuvriers() {
+    return nombreOuvriers;
+  }
+
+  public int getNombreSoldats() {
+    return nombreSoldats;
+  }
+
+  public int getNombreMales() {
+    return nombreMales;
+  }
+
+  public int getNombreFemelles() {
+    return nombreFemelles;
+  }
+
   @Override
   public String toString() {
     int nombreTotalFourmiAdultes =
         this.nombreOuvriers + this.nombreFemelles + this.nombreMales + this.nombreSoldats;
 
-    int affichagePourcentageOuvrieres = (int) (this.pourcentageOuvriere * 100);
-    int affichagePourcentageSoldats = (int) (this.pourcentageOuvriere
-        - (this.pourcentageOuvriere - this.pourcentageSoldat) * 100);
-    int affichagePourcentageSexues =
+    double affichagePourcentageOuvrieres = this.pourcentageOuvriere * 100;
+    double affichagePourcentageSoldats =
+        this.pourcentageOuvriere - (this.pourcentageOuvriere - this.pourcentageSoldat) * 100;
+    double affichagePourcentageSexues =
         100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
-    String res = "Fourmilière (Ouvrières : " + affichagePourcentageOuvrieres + "%, Soldats : "
-        + affichagePourcentageSoldats + "%, Sexués : " + affichagePourcentageSexues + "%) :";
+    String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)
+        + "%, Soldats : " + df2.format(affichagePourcentageSoldats) + "%, Sexués : "
+        + df2.format(affichagePourcentageSexues) + "%) :";
 
     res += "\n\t- Nombre d'oeufs : " + this.nombreOeufs;
     res += "\n\t- Nombre de larves : " + this.nombreLarves;
@@ -159,6 +196,24 @@ public class Fourmiliere {
   public int getNombreNymphes() {
     return nombreNymphes;
   }
-
-
+  
+  public boolean chercherFourmi(Fourmi laFourmiATrouver) {
+    if(laFourmiATrouver == null) {
+      return false;
+    }
+    
+    if(this.laReineDesFourmis.equals(laFourmiATrouver)) {
+      return true;
+    }
+    
+    for(Fourmi uneFourmi : this.lesFourmis) {
+      if(uneFourmi.equals(laFourmiATrouver)) {
+        return true;
+      }
+    }
+    
+    return false;
+  }
+  
+  
 }
