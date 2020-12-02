@@ -7,6 +7,8 @@ import fourmi.Fourmi;
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
   Fourmi laReineDesFourmis;
+  
+  Terrain leTerrain;
 
   private int nombreOeufs = 0;
   private int nombreLarves = 0;
@@ -26,6 +28,14 @@ public class Fourmiliere {
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvriere + 0.25 - (pourcentageOuvriere + 0.2)))
             + (pourcentageOuvriere + 0.2);
+  }
+  
+  public Terrain getLeTerrain() {
+    return leTerrain;
+  }
+
+  public void setLeTerrain(Terrain leTerrain) {
+    this.leTerrain = leTerrain;
   }
 
   public double getPourcentageOuvriere() {
