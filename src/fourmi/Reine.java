@@ -13,19 +13,21 @@ public class Reine extends Femelle {
 
   @Override
   public void step() {
-    this.pondre();
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
       this.mourir();
     }
+    else if(this.lAdulte.getLaFourmi().getLaFourmiliere().getLeTerrain().isPrintemps()) {
+      this.pondre();
+    }
   }
 
   protected void pondre() {
-    Fourmiliere laFourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
-    Fourmi laFourmi = new Fourmi();
-    laFourmi.setLaFourmiliere(laFourmiliere);
-    laFourmiliere.ajouterFourmi(laFourmi);
-    laFourmiliere.incrementerNombreOeufs();
+      Fourmiliere laFourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
+      Fourmi laFourmi = new Fourmi();
+      laFourmi.setLaFourmiliere(laFourmiliere);
+      laFourmiliere.ajouterFourmi(laFourmi);
+      laFourmiliere.incrementerNombreOeufs();
   }
   
   protected void mourir() {
