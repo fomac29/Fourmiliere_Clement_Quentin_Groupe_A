@@ -13,11 +13,9 @@ public class Male extends Sexue {
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
-      Fourmi laFourmi = this.lAdulte.getLaFourmi();
-      Fourmiliere laFourmiliere = laFourmi.getLaFourmiliere();
-      laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+      this.mourir();
+      Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
       laFourmiliere.decrementerNombreMales();
     }
   }
-
 }

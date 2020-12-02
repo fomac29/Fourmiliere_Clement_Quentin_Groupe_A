@@ -3,12 +3,13 @@ package terrain;
 import java.util.ArrayList;
 import java.util.List;
 import fourmi.Fourmi;
+import vue.VueFourmiliere;
 
 public class Fourmiliere {
-  List<Fourmi> lesFourmis;
-  Fourmi laReineDesFourmis;
+  private List<Fourmi> lesFourmis;
+  private Fourmi laReineDesFourmis;
   
-  Terrain leTerrain;
+  private Terrain leTerrain;
 
   private int nombreOeufs = 0;
   private int nombreLarves = 0;
@@ -21,9 +22,10 @@ public class Fourmiliere {
   private double pourcentageOuvriere;
   private double pourcentageSoldat;
 
-  public Fourmiliere(Fourmi reine) {
+  public Fourmiliere(Terrain terrain) {
+    this.leTerrain = terrain;
+    this.leTerrain.getLaVueTerrain().ajouterFourmiliere();
     this.lesFourmis = new ArrayList<Fourmi>();
-    this.laReineDesFourmis = reine;
     this.pourcentageOuvriere = (Math.random() * (0.7 - 0.6)) + 0.6;
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvriere + 0.25 - (pourcentageOuvriere + 0.2)))
@@ -56,7 +58,8 @@ public class Fourmiliere {
     }
   }
 
-  public void ajouterFourmi(Fourmi uneFourmi) {
+  public void ajouterFourmi() {
+    Fourmi uneFourmi = new Fourmi(this);
     this.lesFourmis.add(uneFourmi);
   }
 
@@ -150,6 +153,12 @@ public class Fourmiliere {
         + this.nombreFemelles * 100 / nombreTotalFourmiAdultes + "%)";
 
     return res;
+  }
+
+  
+  
+  public void setLaReineDesFourmis(Fourmi laReineDesFourmis) {
+    this.laReineDesFourmis = laReineDesFourmis;
   }
 
   public Fourmi getLaReineDesFourmis() {

@@ -13,9 +13,8 @@ public class Soldat extends Role {
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
-      Fourmi laFourmi = this.lAdulte.getLaFourmi();
+      this.mourir();
       Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
-      laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
       laFourmiliere.decrementerNombreSoldats();
     }
   }
