@@ -25,6 +25,6 @@ public class Simulateur {
         e.printStackTrace();
       }
     }
-    System.out.println("Fin de la simulation (Reine morte)");
+    System.out.println("Fin de la simulation");
   }
 }
