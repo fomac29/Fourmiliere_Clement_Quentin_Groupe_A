@@ -43,7 +43,7 @@ public class Fourmiliere {
     fourmiliere.setColor(Color.RED);
     fourmiliere.setPosition(new Point(30, 30));
     fourmiliere.setDimension(new Dimension(400, 300));
-    laVueDuTerrain.getFenetre().addElement(fourmiliere);
+    laVueDuTerrain.getTerrain().addElement(fourmiliere);
   }
   
   public Terrain getLeTerrain() {
