@@ -46,6 +46,4 @@ public class Terrain {
   public VueTerrain getLaVueTerrain() {
     return laVueTerrain;
   }
-  
-  
 }
