@@ -39,10 +39,9 @@ public class Fourmiliere {
     VueTerrain laVueDuTerrain = this.leTerrain.getLaVueTerrain();
     
     GRect fourmiliere = new GRect();
-    fourmiliere.withoutBorder();
-    fourmiliere.setColor(Color.RED);
-    fourmiliere.setPosition(new Point(30, 30));
-    fourmiliere.setDimension(new Dimension(400, 300));
+    fourmiliere.setColor(Color.BLACK);
+    fourmiliere.setPosition(new Point(0, 0));
+    fourmiliere.setDimension(new Dimension(50, 50));
     laVueDuTerrain.getTerrain().addElement(fourmiliere);
   }
   
