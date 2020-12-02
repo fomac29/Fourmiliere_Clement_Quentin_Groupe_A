@@ -25,7 +25,10 @@ public class Fourmiliere {
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
     }
-    this.laReineDesFourmis.step();
+    // si la reine n'est pas morte
+    if(this.laReineDesFourmis != null) {
+      this.laReineDesFourmis.step(); 
+    }
   }
 
   public void ajouterFourmi(Fourmi uneFourmi) {
@@ -34,6 +37,10 @@ public class Fourmiliere {
   
   public void supprimerFourmi(Fourmi uneFourmi) {
     this.lesFourmis.remove(uneFourmi);
+  }
+  
+  public void supprimerReine() {
+    this.laReineDesFourmis = null;
   }
 
   public void incrementerNombreOeufs() {
@@ -104,6 +111,14 @@ public class Fourmiliere {
     res += "\n\t- Nombre de femelles : " + this.nombreFemelles;
 
     return res;
+  }
+
+  public Fourmi getLaReineDesFourmis() {
+    return laReineDesFourmis;
+  }
+
+  public int getNombreNymphes() {
+    return nombreNymphes;
   }
 
 
