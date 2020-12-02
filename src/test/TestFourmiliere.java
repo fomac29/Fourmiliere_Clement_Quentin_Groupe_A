@@ -119,6 +119,10 @@ class TestFourmiliere {
 
     int nbNymphes = this.laFourmiliere.getNombreNymphes();
     this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
+    
+    double pourcentageOuvrieresAttendu = this.laFourmiliere.getPourcentageOuvrieres();
+    double pourcentageSoldatsAttendu = this.laFourmiliere.getPourcentageSoldats();
+    double pourcentageSexuesAttendu = this.laFourmiliere.getPourcentageSexues();
 
     while (this.laReineDesFourmis != null || nbNymphes != 0) {
       this.leTerrain.step();
@@ -172,9 +176,9 @@ class TestFourmiliere {
       assertEquals(nombreMales, this.laFourmiliere.getNombreMales());
       assertEquals(nombreFemelles, this.laFourmiliere.getNombreFemelles());
       
-      double pourcentageOuvrieresAttendu = this.laFourmiliere.getPourcentageOuvrieres();
-      double pourcentageSoldatsAttendu = this.laFourmiliere.getPourcentageSoldats();
-      double pourcentageAttendu = this.laFourmiliere.getPourcentageSoldats();
+      int totalFourmisActives = nombreOuvriers + nombreSoldats + nombreMales + nombreFemelles;
+      
+    //  double pourcentageReelOuvrier = 
     }
 
     assertEquals(this.laFourmiliere.getNombreNymphes(), 0);
