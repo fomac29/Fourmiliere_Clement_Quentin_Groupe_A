@@ -3,12 +3,15 @@ package terrain;
 import etape.Adulte;
 import fourmi.Fourmi;
 import fourmi.Reine;
+import vue.VueTerrain;
 
 public class Terrain {
-  Fourmiliere laFourmiliere;
-  int jourCourant;
+  private VueTerrain laVueTerrain;
+  private Fourmiliere laFourmiliere;
+  private int jourCourant;
   
   public Terrain() {
+    this.laVueTerrain = new VueTerrain();
     this.jourCourant = 0;
     Fourmi reine = new Fourmi();
     this.laFourmiliere = new Fourmiliere(reine);
@@ -39,4 +42,10 @@ public class Terrain {
   public void setLaFourmiliere(Fourmiliere laFourmiliere) {
     this.laFourmiliere = laFourmiliere;
   }
+
+  public VueTerrain getLaVueTerrain() {
+    return laVueTerrain;
+  }
+  
+  
 }

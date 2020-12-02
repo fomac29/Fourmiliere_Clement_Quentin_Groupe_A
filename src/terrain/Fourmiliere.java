@@ -1,8 +1,13 @@
 package terrain;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import fourmi.Fourmi;
+import graphicLayer.GRect;
+import vue.VueTerrain;
 
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
@@ -28,6 +33,17 @@ public class Fourmiliere {
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvriere + 0.25 - (pourcentageOuvriere + 0.2)))
             + (pourcentageOuvriere + 0.2);
+  }
+  
+  public void placerFourmiliere() {
+    VueTerrain laVueDuTerrain = this.leTerrain.getLaVueTerrain();
+    
+    GRect fourmiliere = new GRect();
+    fourmiliere.withoutBorder();
+    fourmiliere.setColor(Color.RED);
+    fourmiliere.setPosition(new Point(30, 30));
+    fourmiliere.setDimension(new Dimension(400, 300));
+    laVueDuTerrain.getFenetre().addElement(fourmiliere);
   }
   
   public Terrain getLeTerrain() {
