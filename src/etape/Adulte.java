@@ -6,6 +6,7 @@ import fourmi.Male;
 import fourmi.Ouvrier;
 import fourmi.Role;
 import fourmi.Soldat;
+import terrain.Fourmiliere;
 
 /**
  * Quatrième et étape de la vie d'une fourmi
@@ -22,18 +23,20 @@ public class Adulte extends Etape {
     super(uneFourmi);
     
     this.laFourmi.getLaFourmiliere().decrementerNombreNymphes();
+    double unNombreAleatoire = Math.random();
+    Fourmiliere laFourmiliere = this.getLaFourmi().getLaFourmiliere();
     
     /*
      * On tire un pourcentage entre 60% et 70% au hasard Puis on tire un nombre au hasard : si
      * celui-ci est inférieur ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
      */
-    if (Math.random() <= this.nombreAleatoire(0.6, 0.7)) {
+    if (unNombreAleatoire <= laFourmiliere.getPourcentageOuvriere()) {
       this.leRole = new Ouvrier(this);
       this.laFourmi.getLaFourmiliere().incrementerNombreOuvriers();
     }
 
     // Même chose entre 20% et 25% pour les fourmis soldats
-    else if (Math.random() <= this.nombreAleatoire(0.2, 0.25)) {
+    else if (unNombreAleatoire <= laFourmiliere.getPourcentageSoldat()) {
       this.leRole = new Soldat(this);
       this.laFourmi.getLaFourmiliere().incrementerNombreSoldats();
     }
