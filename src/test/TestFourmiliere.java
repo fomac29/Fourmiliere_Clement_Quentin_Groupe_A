@@ -187,7 +187,7 @@ class TestFourmiliere {
     int nbNymphes = this.laFourmiliere.getNombreNymphes();
     this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
 
-    int margeErreurPourcentage = 3;
+    int margeErreurPourcentage = 5;
 
     int nbTests = 5000;
     int nbEchecs = 0;
@@ -236,7 +236,7 @@ class TestFourmiliere {
       this.laFourmiliere = this.leTerrain.getLaFourmiliere();
       this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
 
-      int pourcentageEchecsSimulationEnCours =
+      double pourcentageEchecsSimulationEnCours =
           (nbEchecsSimulationEnCours * 100) / nbTestsSimulationEnCours;
 
      System.err.println("Test numéro " + (i + 1) + " Nombre d'échecs du test : " + nbEchecsSimulationEnCours + " "
@@ -247,7 +247,7 @@ class TestFourmiliere {
       }
     }
 
-    int pourcentageEchecs = (nbEchecs * 100) / nbTests;
+    double pourcentageEchecs = (nbEchecs * 100) / nbTests;
     System.err.println("Nombre d'échecs total : " + nbEchecs + "\t" + "Pourcentage d'échec total : "
         + pourcentageEchecs + "%");
     assertTrue(pourcentageEchecs <= 20);
