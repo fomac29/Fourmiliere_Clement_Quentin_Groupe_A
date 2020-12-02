@@ -31,6 +31,10 @@ public class Fourmiliere {
   public void ajouterFourmi(Fourmi uneFourmi) {
     this.lesFourmis.add(uneFourmi);
   }
+  
+  public void supprimerFourmi(Fourmi uneFourmi) {
+    this.lesFourmis.remove(uneFourmi);
+  }
 
   public void incrementerNombreOeufs() {
     this.nombreOeufs++;

@@ -13,7 +13,7 @@ public class Terrain {
     reine.setLaFourmiliere(laFourmiliere);
     Adulte adulte = new Adulte();
     adulte.setLaFourmi(reine);
-    // La reine étant une femelle, il faut l'incrémenter
+    // La reine est une femelle
     this.laFourmiliere.incrementerNombreFemelles();
     adulte.setLeRole(new Reine(adulte));
     reine.setlEtape(adulte);

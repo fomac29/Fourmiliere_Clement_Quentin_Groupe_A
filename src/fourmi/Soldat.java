@@ -10,7 +10,11 @@ public class Soldat extends Role {
 
   @Override
   public void step() {
-
+    this.esperanceDeVie--;
+    if (esperanceDeVie == 0) {
+      Fourmi laFourmi = this.lAdulte.getLaFourmi();
+      laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+    }
   }
 
 }
