@@ -10,8 +10,12 @@ public class Male extends Sexue {
 
   @Override
   public void step() {
-    // TODO Auto-generated method stub
-
+    this.esperanceDeVie--;
+    if (esperanceDeVie == 0) {
+      Fourmi laFourmi = this.lAdulte.getLaFourmi();
+      laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+      System.err.println("Mâle mort");
+    }
   }
 
 }

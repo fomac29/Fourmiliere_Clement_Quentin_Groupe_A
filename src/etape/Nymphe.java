@@ -11,6 +11,8 @@ import fourmi.Fourmi;
 public class Nymphe extends Etape {
   public Nymphe(Fourmi uneFourmi) {
     super(uneFourmi);
+    this.laFourmi.getLaFourmiliere().incrementerNombreNymphes();
+    this.laFourmi.getLaFourmiliere().decrementerNombreLarves();
   }
 
   int tempsRestant = 10;

@@ -11,6 +11,8 @@ import fourmi.Fourmi;
 public class Larve extends Etape {
   public Larve(Fourmi uneFourmi) {
     super(uneFourmi);
+    this.laFourmi.getLaFourmiliere().incrementerNombreLarves();
+    this.laFourmi.getLaFourmiliere().decrementerNombreOeufs();
   }
 
   int tempsRestant = 10;
@@ -19,7 +21,7 @@ public class Larve extends Etape {
 
     this.tempsRestant = this.tempsRestant - 1;
     if (this.tempsRestant == 0) {
-      super.laFourmi.setlEtape(new Nymphe(super.laFourmi));
+      this.laFourmi.setlEtape(new Nymphe(super.laFourmi));
     }
   }
 
