@@ -16,9 +16,7 @@ import fourmi.Soldat;
 public class Adulte extends Etape {
   Role leRole;
 
-  private double pourcentageDeChance(double min, double max) {
-    return (Math.random() * (max - min)) + min;
-  }
+  
 
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
@@ -29,15 +27,15 @@ public class Adulte extends Etape {
      * On tire un pourcentage entre 60% et 70% au hasard Puis on tire un nombre au hasard : si
      * celui-ci est inférieur ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
      */
-    if (Math.random() <= this.pourcentageDeChance(0.6, 0.7)) {
+    if (Math.random() <= this.nombreAleatoire(0.6, 0.7)) {
       this.leRole = new Ouvrier(this);
-      super.laFourmi.getLaFourmiliere().incrementerNombreOuvriers();
+      this.laFourmi.getLaFourmiliere().incrementerNombreOuvriers();
     }
 
     // Même chose entre 20% et 25% pour les fourmis soldats
-    else if (Math.random() <= this.pourcentageDeChance(0.2, 0.25)) {
+    else if (Math.random() <= this.nombreAleatoire(0.2, 0.25)) {
       this.leRole = new Soldat(this);
-      super.laFourmi.getLaFourmiliere().incrementerNombreSoldats();
+      this.laFourmi.getLaFourmiliere().incrementerNombreSoldats();
     }
 
     // Sinon, c'est une fourmi sexué
@@ -45,13 +43,13 @@ public class Adulte extends Etape {
       // La fourmi a 50% de chance d'être une femelle
       if (Math.random() <= 0.5) {
         this.leRole = new Femelle(this);
-        super.laFourmi.getLaFourmiliere().incrementerNombreFemelles();
+        this.laFourmi.getLaFourmiliere().incrementerNombreFemelles();
       }
 
       // Sinon c'est un mâle
       else {
         this.leRole = new Male(this);
-        super.laFourmi.getLaFourmiliere().incrementerNombreMales();
+        this.laFourmi.getLaFourmiliere().incrementerNombreMales();
       }
     }
   }

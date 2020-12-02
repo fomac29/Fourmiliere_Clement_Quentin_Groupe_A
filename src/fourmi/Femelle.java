@@ -10,10 +10,14 @@ public class Femelle extends Sexue {
 
   @Override
   public void step() {
-
+    this.esperanceDeVie--;
+    if (esperanceDeVie == 0) {
+      Fourmi laFourmi = this.lAdulte.getLaFourmi();
+      laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+    }
   }
 
   public void devenirReine() {
-    super.lAdulte.setLeRole(new Reine(super.lAdulte));
+    this.lAdulte.setLeRole(new Reine(super.lAdulte));
   }
 }
