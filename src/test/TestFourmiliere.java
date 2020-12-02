@@ -197,7 +197,7 @@ class TestFourmiliere {
       double pourcentageSoldatsAttendu =
           (this.laFourmiliere.getPourcentageSoldats() * 100) - pourcentageOuvrieresAttendu;
       double pourcentageSexuesAttendu = this.laFourmiliere.getPourcentageSexues() * 100;
-      
+
       int nbTestsSimulationEnCours = 0;
       int nbEchecsSimulationEnCours = 0;
 
@@ -227,7 +227,7 @@ class TestFourmiliere {
               || pourcentageReelSexues > (pourcentageSexuesAttendu + margeErreurPourcentage)) {
             nbEchecsSimulationEnCours++;
           }
-          
+
           nbTestsSimulationEnCours++;
         }
       }
@@ -239,8 +239,9 @@ class TestFourmiliere {
       double pourcentageEchecsSimulationEnCours =
           (nbEchecsSimulationEnCours * 100) / nbTestsSimulationEnCours;
 
-     System.err.println("Test numéro " + (i + 1) + " Nombre d'échecs du test : " + nbEchecsSimulationEnCours + " "
-          + "Pourcentage d'échec du test : " + pourcentageEchecsSimulationEnCours + "%");
+      System.err.println(
+          "Test numéro " + (i + 1) + " Nombre d'échecs du test : " + nbEchecsSimulationEnCours + " "
+              + "Pourcentage d'échec du test : " + pourcentageEchecsSimulationEnCours + "%");
 
       if (pourcentageEchecsSimulationEnCours > 5) {
         nbEchecs++;
