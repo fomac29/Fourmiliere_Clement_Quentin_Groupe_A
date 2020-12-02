@@ -6,19 +6,23 @@ import fourmi.Reine;
 import vue.VueTerrain;
 
 public class Terrain {
-  private VueTerrain laVueTerrain;
   private Fourmiliere laFourmiliere;
+  private VueTerrain laVueTerrain;
   private int jourCourant;
   
   public Terrain() {
     this.laVueTerrain = new VueTerrain();
+    this.laVueTerrain.ajouterTerrain();
+    
     this.jourCourant = 0;
-    Fourmi reine = new Fourmi();
-    this.laFourmiliere = new Fourmiliere(reine);
-    this.laFourmiliere.setLeTerrain(this);
-    reine.setLaFourmiliere(laFourmiliere);
+    
+    this.laFourmiliere = new Fourmiliere(this);
+    Fourmi reine = new Fourmi(laFourmiliere);
+    this.laFourmiliere.setLaReineDesFourmis(reine);
+    
     Adulte adulte = new Adulte();
     adulte.setLaFourmi(reine);
+    
     // La reine est une femelle
     this.laFourmiliere.incrementerNombreFemelles();
     adulte.setLeRole(new Reine(adulte));
@@ -46,4 +50,10 @@ public class Terrain {
   public VueTerrain getLaVueTerrain() {
     return laVueTerrain;
   }
+
+  public int getJourCourant() {
+    return jourCourant;
+  }
+  
+  
 }

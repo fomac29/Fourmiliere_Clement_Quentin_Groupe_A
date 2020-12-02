@@ -1,10 +1,11 @@
+
 package simulation;
 
 import fourmi.Fourmi;
 import terrain.Terrain;
 
 public class Simulateur {
-  Terrain leTerrain;
+  private Terrain leTerrain;
   
   public Simulateur() {
     this.leTerrain = new Terrain();
@@ -14,13 +15,13 @@ public class Simulateur {
     Fourmi reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
     int nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
     
-    while (reine != null || nbNymphes != 0) {
+    while (this.leTerrain.getJourCourant() < 100) {
       reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
       nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
-      System.out.println(this.leTerrain.getLaFourmiliere().toString());
+      //System.out.println(this.leTerrain.getLaFourmiliere().toString());
       this.leTerrain.step();
       try {
-        Thread.sleep(1);
+        Thread.sleep(100);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
