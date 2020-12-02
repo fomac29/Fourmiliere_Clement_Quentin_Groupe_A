@@ -19,7 +19,7 @@ public class Fourmiliere {
   private int nombreMales = 0;
   private int nombreFemelles = 0;
 
-  private double pourcentageOuvriere;
+  private double pourcentageOuvrieres;
   private double pourcentageSoldat;
 
   /**
@@ -32,10 +32,10 @@ public class Fourmiliere {
     this.laReineDesFourmis = reine;
     // La reine est une femelle
     this.incrementerNombreFemelles();
-    this.pourcentageOuvriere = (Math.random() * (0.7 - 0.6)) + 0.6;
+    this.pourcentageOuvrieres = (Math.random() * (0.7 - 0.6)) + 0.6;
     this.pourcentageSoldat =
-        (Math.random() * (pourcentageOuvriere + 0.25 - (pourcentageOuvriere + 0.2)))
-            + (pourcentageOuvriere + 0.2);
+        (Math.random() * (pourcentageOuvrieres + 0.25 - (pourcentageOuvrieres + 0.2)))
+            + (pourcentageOuvrieres + 0.2);
   }
 
   public Terrain getLeTerrain() {
@@ -45,13 +45,17 @@ public class Fourmiliere {
   public void setLeTerrain(Terrain leTerrain) {
     this.leTerrain = leTerrain;
   }
-
-  public double getPourcentageOuvriere() {
-    return pourcentageOuvriere;
+  
+  public double getPourcentageOuvrieres() {
+    return pourcentageOuvrieres * 100;
   }
 
-  public double getPourcentageSoldat() {
-    return pourcentageSoldat;
+  public double getPourcentageSoldats() {
+    return pourcentageSoldat * 100;
+  }
+  
+  public double getPourcentageSexues() {
+    return (1 - (this.pourcentageSoldat + this.pourcentageOuvrieres)) * 100;
   }
 
   public List<Fourmi> getLesFourmis() {
@@ -165,9 +169,9 @@ public class Fourmiliere {
     int nombreTotalFourmiAdultes =
         this.nombreOuvriers + this.nombreFemelles + this.nombreMales + this.nombreSoldats;
 
-    double affichagePourcentageOuvrieres = this.pourcentageOuvriere * 100;
+    double affichagePourcentageOuvrieres = this.pourcentageOuvrieres * 100;
     double affichagePourcentageSoldats =
-        this.pourcentageOuvriere - (this.pourcentageOuvriere - this.pourcentageSoldat) * 100;
+        this.pourcentageOuvrieres - (this.pourcentageOuvrieres - this.pourcentageSoldat) * 100;
     double affichagePourcentageSexues =
         100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
     String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)

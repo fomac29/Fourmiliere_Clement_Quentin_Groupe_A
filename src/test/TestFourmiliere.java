@@ -171,6 +171,10 @@ class TestFourmiliere {
       assertEquals(nombreSoldats, this.laFourmiliere.getNombreSoldats());
       assertEquals(nombreMales, this.laFourmiliere.getNombreMales());
       assertEquals(nombreFemelles, this.laFourmiliere.getNombreFemelles());
+      
+      double pourcentageOuvrieresAttendu = this.laFourmiliere.getPourcentageOuvrieres();
+      double pourcentageSoldatsAttendu = this.laFourmiliere.getPourcentageSoldats();
+      double pourcentageAttendu = this.laFourmiliere.getPourcentageSoldats();
     }
 
     assertEquals(this.laFourmiliere.getNombreNymphes(), 0);
