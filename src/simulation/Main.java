@@ -1,6 +1,4 @@
-package terrain;
-
-import simulation.Simulateur;
+package simulation;
 
 public class Main {
 
