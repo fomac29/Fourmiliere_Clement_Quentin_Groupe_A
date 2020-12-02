@@ -1,6 +1,7 @@
 package fourmi;
 
 import etape.Adulte;
+import terrain.Fourmiliere;
 
 public class Ouvrier extends Role {
 
@@ -13,8 +14,9 @@ public class Ouvrier extends Role {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
       Fourmi laFourmi = this.lAdulte.getLaFourmi();
+      Fourmiliere laFourmiliere = laFourmi.getLaFourmiliere();
       laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
-      System.err.println("Ouvrière mort");
+      laFourmiliere.decrementerNombreOuvriers();
     }
   }
 
