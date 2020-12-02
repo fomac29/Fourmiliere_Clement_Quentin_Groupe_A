@@ -93,7 +93,7 @@ class TestFourmiliere {
     assertTrue(this.laFourmiliere.getNombreOeufs() >= 10);
     assertTrue(this.laFourmiliere.getNombreOeufs() <= 20);
     List<Fourmi> lesFourmis = this.laFourmiliere.getLesFourmis();
-    for(Fourmi uneFourmi : lesFourmis) {
+    for (Fourmi uneFourmi : lesFourmis) {
       assertTrue(uneFourmi.getlEtape() instanceof Oeuf);
     }
   }
@@ -112,23 +112,19 @@ class TestFourmiliere {
     int nombreOeufs;
     int nombreLarves;
     int nombreNymphes;
-    int nombreOuvriers;
-    int nombreSoldats;
-    int nombreMales;
-    int nombreFemelles;
+    int nombreOuvriers = 0;
+    int nombreSoldats = 0;
+    int nombreMales = 0;
+    int nombreFemelles = 0;
 
     int nbNymphes = this.laFourmiliere.getNombreNymphes();
     this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
-    
-    double pourcentageOuvrieresAttendu = this.laFourmiliere.getPourcentageOuvrieres();
-    double pourcentageSoldatsAttendu = this.laFourmiliere.getPourcentageSoldats();
-    double pourcentageSexuesAttendu = this.laFourmiliere.getPourcentageSexues();
 
     while (this.laReineDesFourmis != null || nbNymphes != 0) {
       this.leTerrain.step();
       this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
       nbNymphes = this.laFourmiliere.getNombreNymphes();
-      
+
       nombreOeufs = 0;
       nombreLarves = 0;
       nombreNymphes = 0;
@@ -175,13 +171,85 @@ class TestFourmiliere {
       assertEquals(nombreSoldats, this.laFourmiliere.getNombreSoldats());
       assertEquals(nombreMales, this.laFourmiliere.getNombreMales());
       assertEquals(nombreFemelles, this.laFourmiliere.getNombreFemelles());
-      
-      int totalFourmisActives = nombreOuvriers + nombreSoldats + nombreMales + nombreFemelles;
-      
-    //  double pourcentageReelOuvrier = 
     }
 
     assertEquals(this.laFourmiliere.getNombreNymphes(), 0);
     assertNull(this.laFourmiliere.getLaReineDesFourmis());
+  }
+
+  @Test
+  void testRepartitionPopulation() {
+    int nombreOuvriers = 0;
+    int nombreSoldats = 0;
+    int nombreMales = 0;
+    int nombreFemelles = 0;
+
+    int nbNymphes = this.laFourmiliere.getNombreNymphes();
+    this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
+
+    int margeErreurPourcentage = 3;
+
+    int nbTests = 5000;
+    int nbEchecs = 0;
+
+    for (int i = 0; i < nbTests; i++) {
+      double pourcentageOuvrieresAttendu = this.laFourmiliere.getPourcentageOuvrieres() * 100;
+      double pourcentageSoldatsAttendu =
+          (this.laFourmiliere.getPourcentageSoldats() * 100) - pourcentageOuvrieresAttendu;
+      double pourcentageSexuesAttendu = this.laFourmiliere.getPourcentageSexues() * 100;
+      
+      int nbTestsSimulationEnCours = 0;
+      int nbEchecsSimulationEnCours = 0;
+
+      while (this.laReineDesFourmis != null || nbNymphes != 0) {
+        this.leTerrain.step();
+        this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
+        nbNymphes = this.laFourmiliere.getNombreNymphes();
+
+        nombreOuvriers = laFourmiliere.getNombreOuvriers();
+        nombreSoldats = laFourmiliere.getNombreSoldats();
+        nombreMales = laFourmiliere.getNombreMales();
+        nombreFemelles = laFourmiliere.getNombreFemelles();
+
+        int totalFourmisActives = nombreOuvriers + nombreSoldats + nombreMales + nombreFemelles;
+
+        if (totalFourmisActives >= 1000) {
+          double pourcentageReelOuvriers = (nombreOuvriers * 100) / totalFourmisActives;
+          double pourcentageReelSoldats = (nombreSoldats * 100) / totalFourmisActives;
+          double pourcentageReelSexues =
+              ((nombreMales + nombreFemelles) * 100) / totalFourmisActives;
+
+          if (pourcentageReelOuvriers < (pourcentageOuvrieresAttendu - margeErreurPourcentage)
+              || pourcentageReelOuvriers > (pourcentageOuvrieresAttendu + margeErreurPourcentage)
+              || pourcentageReelSoldats < (pourcentageSoldatsAttendu - margeErreurPourcentage)
+              || pourcentageReelSoldats > (pourcentageSoldatsAttendu + margeErreurPourcentage)
+              || pourcentageReelSexues < pourcentageSexuesAttendu - margeErreurPourcentage
+              || pourcentageReelSexues > (pourcentageSexuesAttendu + margeErreurPourcentage)) {
+            nbEchecsSimulationEnCours++;
+          }
+          
+          nbTestsSimulationEnCours++;
+        }
+      }
+
+      this.leTerrain = new Terrain();
+      this.laFourmiliere = this.leTerrain.getLaFourmiliere();
+      this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
+
+      int pourcentageEchecsSimulationEnCours =
+          (nbEchecsSimulationEnCours * 100) / nbTestsSimulationEnCours;
+
+     System.err.println("Test numéro " + i + " Nombre d'échecs du test : " + nbEchecsSimulationEnCours + "\t"
+          + "Pourcentage d'échec du test : " + pourcentageEchecsSimulationEnCours + "%");
+
+      if (pourcentageEchecsSimulationEnCours > 5) {
+        nbEchecs++;
+      }
+    }
+
+    int pourcentageEchecs = (nbEchecs * 100) / nbTests;
+    System.err.println("Nombre d'échecs total : " + nbEchecs + "\t" + "Pourcentage d'échec total : "
+        + pourcentageEchecs + "%");
+    assertTrue(pourcentageEchecs <= 20);
   }
 }

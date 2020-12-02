@@ -17,8 +17,6 @@ import terrain.Fourmiliere;
 public class Adulte extends Etape {
   Role leRole;
 
-  
-
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
     

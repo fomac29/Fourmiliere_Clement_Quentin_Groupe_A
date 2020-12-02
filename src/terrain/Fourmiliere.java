@@ -45,17 +45,17 @@ public class Fourmiliere {
   public void setLeTerrain(Terrain leTerrain) {
     this.leTerrain = leTerrain;
   }
-  
+
   public double getPourcentageOuvrieres() {
-    return pourcentageOuvrieres * 100;
+    return pourcentageOuvrieres;
   }
 
   public double getPourcentageSoldats() {
-    return pourcentageSoldat * 100;
+    return pourcentageSoldat;
   }
-  
+
   public double getPourcentageSexues() {
-    return (1 - (this.pourcentageSoldat + this.pourcentageOuvrieres)) * 100;
+    return 1 - (this.pourcentageOuvrieres + (this.pourcentageSoldat - this.pourcentageOuvrieres));
   }
 
   public List<Fourmi> getLesFourmis() {
@@ -171,7 +171,7 @@ public class Fourmiliere {
 
     double affichagePourcentageOuvrieres = this.pourcentageOuvrieres * 100;
     double affichagePourcentageSoldats =
-        this.pourcentageOuvrieres - (this.pourcentageOuvrieres - this.pourcentageSoldat) * 100;
+        (this.pourcentageSoldat - this.pourcentageOuvrieres) * 100;
     double affichagePourcentageSexues =
         100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
     String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)
@@ -200,24 +200,24 @@ public class Fourmiliere {
   public int getNombreNymphes() {
     return nombreNymphes;
   }
-  
+
   public boolean chercherFourmi(Fourmi laFourmiATrouver) {
-    if(laFourmiATrouver == null) {
+    if (laFourmiATrouver == null) {
       return false;
     }
-    
-    if(this.laReineDesFourmis.equals(laFourmiATrouver)) {
+
+    if (this.laReineDesFourmis.equals(laFourmiATrouver)) {
       return true;
     }
-    
-    for(Fourmi uneFourmi : this.lesFourmis) {
-      if(uneFourmi.equals(laFourmiATrouver)) {
+
+    for (Fourmi uneFourmi : this.lesFourmis) {
+      if (uneFourmi.equals(laFourmiATrouver)) {
         return true;
       }
     }
-    
+
     return false;
   }
-  
-  
+
+
 }
