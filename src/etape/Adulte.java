@@ -65,6 +65,12 @@ public class Adulte extends Etape {
   public Adulte() {
     super();
   }
+  
+  @Override
+  public void step() {
+    this.deplacerFourmi();
+    this.leRole.step();
+  }
 
   public void ajouterFourmi() {
     composantGraphique = new GOval();
@@ -105,10 +111,8 @@ public class Adulte extends Etape {
     this.leRole = leRole;
   }
 
-  @Override
-  public void step() {
-    this.deplacerFourmi();
-    this.leRole.step();
+  public GOval getComposantGraphique() {
+    return composantGraphique;
   }
   
   

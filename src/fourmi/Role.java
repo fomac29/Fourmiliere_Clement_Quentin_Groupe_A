@@ -16,6 +16,7 @@ public abstract class Role {
     Fourmi laFourmi = this.lAdulte.getLaFourmi();
     Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
     laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+    laFourmiliere.getLeTerrain().getLaVueTerrain().supprimerFourmi(this.lAdulte.getComposantGraphique());
   }
 
   public Adulte getlAdulte() {
