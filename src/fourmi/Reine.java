@@ -8,7 +8,6 @@ public class Reine extends Femelle {
   public Reine(Adulte lAdulte) {
     super(lAdulte);
     this.esperanceDeVie = (int) (Math.random() * (3650 - 1460)) + 1460;
-    System.out.println(this.esperanceDeVie);
   }
 
   @Override
@@ -24,13 +23,11 @@ public class Reine extends Femelle {
 
   protected void pondre() {
       Fourmiliere laFourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
-      Fourmi laFourmi = new Fourmi();
-      laFourmi.setLaFourmiliere(laFourmiliere);
-      laFourmiliere.ajouterFourmi(laFourmi);
+      laFourmiliere.ajouterFourmi();
       laFourmiliere.incrementerNombreOeufs();
   }
   
-  protected void mourir() {
+  public void mourir() {
     Fourmiliere fourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
     Fourmi laFourmi = this.lAdulte.getLaFourmi();
     laFourmi.getLaFourmiliere().supprimerReine();

@@ -1,12 +1,18 @@
 package etape;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.util.Random;
 import fourmi.Femelle;
 import fourmi.Fourmi;
 import fourmi.Male;
 import fourmi.Ouvrier;
 import fourmi.Role;
 import fourmi.Soldat;
+import graphicLayer.GOval;
 import terrain.Fourmiliere;
+import vue.VueTerrain;
 
 /**
  * Quatrième et étape de la vie d'une fourmi
@@ -15,12 +21,13 @@ import terrain.Fourmiliere;
  *
  */
 public class Adulte extends Etape {
-  Role leRole;
-
-  
+  private Role leRole;
+  private GOval composantGraphique = new GOval();
 
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
+    
+    this.ajouterFourmi();
     
     double unNombreAleatoire = Math.random();
     Fourmiliere laFourmiliere = this.getLaFourmi().getLaFourmiliere();
@@ -59,6 +66,37 @@ public class Adulte extends Etape {
     super();
   }
 
+  public void ajouterFourmi() {
+    composantGraphique = new GOval();
+    composantGraphique.setPosition(new Point(0,0));
+    composantGraphique.setDimension(new Dimension(5, 5));
+    composantGraphique.setColor(Color.yellow);
+    
+    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
+    laVueDuTerrain.ajouterFourmi(composantGraphique);
+  }
+  
+  public void deplacerFourmi() {
+    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
+    
+    Random random = new Random();
+    int unNombreAleatoire = random.nextInt(2);
+    
+    if(unNombreAleatoire == 0) {
+      int positionX = random.nextInt(laVueDuTerrain.getLargeurTerrain());
+      composantGraphique.setX(positionX);
+    }else {
+      int positionY = random.nextInt(laVueDuTerrain.getHauteurTerrain());
+      composantGraphique.setY(positionY);
+    }
+    
+  }
+  
+  public void supprimerFourmi() {
+    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
+    laVueDuTerrain.supprimerFourmi(composantGraphique);
+  }
+  
   public Role getLeRole() {
     return leRole;
   }
@@ -69,6 +107,7 @@ public class Adulte extends Etape {
 
   @Override
   public void step() {
+    this.deplacerFourmi();
     this.leRole.step();
   }
   

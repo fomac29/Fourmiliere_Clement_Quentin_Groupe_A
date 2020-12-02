@@ -8,7 +8,8 @@ public class Fourmi {
   private Etape lEtape;
   private Fourmiliere laFourmiliere;
 
-  public Fourmi() {
+  public Fourmi(Fourmiliere fourmiliere) {
+    this.laFourmiliere = fourmiliere;
     this.lEtape = new Oeuf(this);
   }
   
@@ -31,4 +32,6 @@ public class Fourmi {
   public void setLaFourmiliere(Fourmiliere laFourmiliere) {
     this.laFourmiliere = laFourmiliere;
   }
+  
+  
 }

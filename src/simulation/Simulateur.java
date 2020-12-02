@@ -1,8 +1,8 @@
+
 package simulation;
 
 import fourmi.Fourmi;
 import terrain.Terrain;
-import vue.VueTerrain;
 
 public class Simulateur {
   private Terrain leTerrain;
@@ -18,10 +18,10 @@ public class Simulateur {
     while (reine != null || nbNymphes != 0) {
       reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
       nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
-      //System.out.println(this.leTerrain.getLaFourmiliere().toString());
+      System.out.println(this.leTerrain.getLaFourmiliere().toString());
       this.leTerrain.step();
       try {
-        Thread.sleep(1);
+        Thread.sleep(5);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
