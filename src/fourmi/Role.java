@@ -1,10 +1,12 @@
 package fourmi;
 
 import etape.Adulte;
+import graphicLayer.GOval;
 
 public abstract class Role {
   Adulte lAdulte;
   Integer esperanceDeVie;
+  GOval representationGraphique;
   
   public Role(Adulte adulte) {
     this.lAdulte = adulte;
