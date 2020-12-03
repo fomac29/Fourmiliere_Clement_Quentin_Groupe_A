@@ -189,7 +189,7 @@ class TestFourmiliere {
 
     int margeErreurPourcentage = 5;
 
-    int nbTests = 5000;
+    int nbTests = 1;
     int nbEchecs = 0;
 
     for (int i = 0; i < nbTests; i++) {

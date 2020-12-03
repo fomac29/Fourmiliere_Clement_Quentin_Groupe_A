@@ -10,8 +10,8 @@ import graphicLayer.GSpace;
 
 public class VueTerrain {
   
-  private final int hauteurTerrain = 700;
-  private final int largeurTerrain = 700;
+  private final int hauteurTerrain = 500;
+  private final int largeurTerrain = 500;
   private GSpace fenetre;
   private GBounded terrain;
   
@@ -28,7 +28,7 @@ public class VueTerrain {
     terrain = new GBounded();
     terrain.setColor(Color.green);
     terrain.setPosition(new Point(30, 30));
-    terrain.setDimension(new Dimension(500, 500));
+    terrain.setDimension(new Dimension(hauteurTerrain, largeurTerrain));
     
     fenetre.addElement(terrain);
   }

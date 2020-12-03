@@ -17,6 +17,7 @@ public class VueFourmiliere {
     this.composantFourmiliere.setColor(new Color(88, 41, 0));
     this.composantFourmiliere.setPosition(new Point(247, 247));
     this.composantFourmiliere.setDimension(new Dimension(50, 50));
+    //this.composantFourmiliere.
     this.laVueTerrain.ajouterFourmiliere(this.composantFourmiliere);
   }
 
