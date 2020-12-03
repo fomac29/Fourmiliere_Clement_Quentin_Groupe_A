@@ -18,25 +18,26 @@ import vue.VueFourmiAdulte;
 public class Adulte extends Etape {
   private Role leRole;
   private VueFourmiAdulte composantGraphique;
+  private Fourmiliere laFourmiliere;
 
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
 
     double unNombreAleatoire = Math.random();
-    Fourmiliere laFourmiliere = this.getLaFourmi().getLaFourmiliere();
+    this.laFourmiliere = this.getLaFourmi().getLaFourmiliere();
     /*
      * On tire un pourcentage entre 60% et 70% au hasard Puis on tire un nombre au hasard : si
      * celui-ci est inférieur ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
      */
     if (unNombreAleatoire <= laFourmiliere.getPourcentageOuvrieres()) {
       this.leRole = new Ouvrier(this);
-      this.laFourmi.getLaFourmiliere().incrementerNombreOuvriers();
+      this.laFourmiliere.incrementerNombreOuvriers();
     }
 
     // Même chose entre 20% et 25% pour les fourmis soldats
     else if (unNombreAleatoire <= laFourmiliere.getPourcentageSoldats()) {
       this.leRole = new Soldat(this);
-      this.laFourmi.getLaFourmiliere().incrementerNombreSoldats();
+      this.laFourmiliere.incrementerNombreSoldats();
     }
 
     // Sinon, c'est une fourmi sexué
@@ -44,13 +45,13 @@ public class Adulte extends Etape {
       // La fourmi a 50% de chance d'être une femelle
       if (Math.random() <= 0.5) {
         this.leRole = new Femelle(this);
-        this.laFourmi.getLaFourmiliere().incrementerNombreFemelles();
+        this.laFourmiliere.incrementerNombreFemelles();
       }
 
       // Sinon c'est un mâle
       else {
         this.leRole = new Male(this);
-        this.laFourmi.getLaFourmiliere().incrementerNombreMales();
+        this.laFourmiliere.incrementerNombreMales();
       }
     }
   }
@@ -64,12 +65,19 @@ public class Adulte extends Etape {
     this.leRole.step();
   }
   
-  public void deplacerFourmi() {
+  public void deplacerComposantFourmi() {
     this.composantGraphique.seDeplacer();
   }
   
-  public void supprimerFourmi() {
+  public void supprimerComposantFourmi() {
     this.composantGraphique.supprimerFourmi();
+  }
+  
+  public void mourir() {
+    Fourmi laFourmi = this.laFourmi;
+    laFourmiliere.supprimerFourmi(laFourmi);
+    laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
+    this.supprimerComposantFourmi();
   }
   
   public Role getLeRole() {

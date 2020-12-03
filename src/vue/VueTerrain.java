@@ -40,14 +40,11 @@ public class VueTerrain {
    * 
    */
   public VueTerrain() {
-    this.InitialiserVue();
-  }
-
-  public void InitialiserVue() {
     fenetre = new GSpace("Terrain", new Dimension(550, 550));
     fenetre.open();
   }
 
+  
   public void ajouterTerrain() {
     terrain = new GBounded();
     terrain.setColor(Color.green);
