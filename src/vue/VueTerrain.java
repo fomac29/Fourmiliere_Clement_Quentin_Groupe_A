@@ -77,7 +77,7 @@ public class VueTerrain {
 
   /**
    * Rafaichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
-   * actualisés 
+   * actualisés
    */
   public void raffraichir() {
     this.terrain.repaint();
@@ -91,18 +91,18 @@ public class VueTerrain {
   public void supprimerFourmi(GOval composantGraphiqueFourmi) {
     this.terrain.removeElement(composantGraphiqueFourmi);
   }
-  
+
   public void ajouterProie(GRect composantGraphiqueProie) {
-    this.terrain.addElement(composantGraphiqueProie);
+    this.fenetre.addElement(composantGraphiqueProie);
     composantGraphiqueProie.repaint();
   }
-  
+
   public void supprimerProie(GRect composantGraphiqueProie) {
     this.terrain.removeElement(composantGraphiqueProie);
   }
 
   /**
-   * Permet d'accéder à la référence du composant graphique représenannt le terrain.
+   * Permet d'accéder à la référence du composant graphique représentant le terrain.
    * 
    * @return Le rectangle représentant le terrain.
    */
@@ -126,5 +126,13 @@ public class VueTerrain {
    */
   public int getLargeurTerrain() {
     return largeurTerrain;
+  }
+  
+  public int getLargeurFenetre() {
+    return this.fenetre.getWidth();
+  }
+  
+  public int getHauteurFenetre() {
+    return this.fenetre.getHeight();
   }
 }

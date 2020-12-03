@@ -5,6 +5,11 @@ import fourmi.Fourmi;
 import fourmi.Reine;
 import vue.VueTerrain;
 
+/**
+ * 
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ */
 public class Terrain {
   private Fourmiliere laFourmiliere;
   private VueTerrain laVueTerrain;
