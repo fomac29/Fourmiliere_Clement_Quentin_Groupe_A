@@ -4,10 +4,26 @@ import etape.Adulte;
 import fourmi.Fourmi;
 import fourmi.Reine;
 
+/**
+ * Le terrain contient actuellement la fourmilière, et pourra en contenir plusieurs à l'avenir.
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ */
 public class Terrain {
+  /**
+   * La fourmilière a simuler.
+   */
   Fourmiliere laFourmiliere;
-  int jourCourant;
   
+  /**
+   * Nombre de jours écoulés depuis le début de la simulation.
+   */
+  int jourCourant;
+
+  /**
+   * Construit le terrain avec sa représentation graphique et initialise une fourmilière contenant
+   * une reine.
+   */
   public Terrain() {
     this.jourCourant = 0;
     Fourmi reine = new Fourmi();
@@ -20,12 +36,21 @@ public class Terrain {
     reine.setlEtape(adulte);
   }
 
+  /**
+   * Effectue un pas de simulation.
+   */
   public void step() {
     this.laFourmiliere.step();
     this.jourCourant++;
   }
 
+
+  /**
+   * Vérifie si le jour courant est un jour de printemps.
+   * @return Vrai si c'est le printemps, faux sinon
+   */
   public boolean isPrintemps() {
+    // Le printemps dure 90 jours dans l'année
     return (this.jourCourant % 365) <= 90;
   }
 

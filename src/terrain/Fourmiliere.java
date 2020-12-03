@@ -37,7 +37,11 @@ public class Fourmiliere {
     this.laReineDesFourmis = reine;
     // La reine est une femelle
     this.incrementerNombreFemelles();
+
+    // Il y a entre 60% et 70% de fourmi ouvrière
     this.pourcentageOuvrieres = (Math.random() * (0.7 - 0.6)) + 0.6;
+
+    // Il y a entre 20% et 25% de fourmis soldat
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvrieres + 0.25 - (pourcentageOuvrieres + 0.2)))
             + (pourcentageOuvrieres + 0.2);
@@ -67,6 +71,9 @@ public class Fourmiliere {
     return lesFourmis;
   }
 
+  /**
+   * Effectue un pas de simulation pour chaque fourmis et de la fourmilière
+   */
   public void step() {
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
@@ -77,14 +84,25 @@ public class Fourmiliere {
     }
   }
 
+  /**
+   * Ajoute une nouvelle proie dans la fourmilière.
+   */
   public void ajouterFourmi(Fourmi uneFourmi) {
     this.lesFourmis.add(uneFourmi);
   }
 
+  /**
+   * Retire la fourmi de fourmilière.
+   * 
+   * @param uneFourmi La fourmi à retirer.
+   */
   public void supprimerFourmi(Fourmi uneFourmi) {
     this.lesFourmis.remove(uneFourmi);
   }
 
+  /**
+   * Retire la reine de la fourmilière, sert quand celle-ci meurt
+   */
   public void supprimerReine() {
     this.laReineDesFourmis = null;
   }
@@ -169,23 +187,35 @@ public class Fourmiliere {
     return nombreFemelles;
   }
 
+  /**
+   * Affiche la fourmilière avec le détail de sa population et la répartition de celle-ci
+   */
   @Override
   public String toString() {
+    /*
+     * La répartition de la population de fourmi n'est calculée qu'en fonction des adultes : En
+     * effets, les autres n'ont pas de rôles
+     */
     int nombreTotalFourmiAdultes =
         this.nombreOuvriers + this.nombreFemelles + this.nombreMales + this.nombreSoldats;
 
+    // Convertis la répartition de la population attendue en pourcentage
     double affichagePourcentageOuvrieres = this.pourcentageOuvrieres * 100;
-    double affichagePourcentageSoldats =
-        (this.pourcentageSoldat - this.pourcentageOuvrieres) * 100;
+    double affichagePourcentageSoldats = (this.pourcentageSoldat - this.pourcentageOuvrieres) * 100;
     double affichagePourcentageSexues =
         100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
+    
+    // On arrondis ces pourcentages à 2 chiffres après la virgule
     String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)
         + "%, Soldats : " + df2.format(affichagePourcentageSoldats) + "%, Sexués : "
         + df2.format(affichagePourcentageSexues) + "%) :";
 
+    // on affiche le nombre de chaque type de fourmis
     res += "\n\t- Nombre d'oeufs : " + this.nombreOeufs;
     res += "\n\t- Nombre de larves : " + this.nombreLarves;
     res += "\n\t- Nombre de nymphes : " + this.nombreNymphes;
+    
+    // Pour les adultes, on calcule leur répartition réelle en pourcentage
     res += "\n\t- Nombre d'ouvrières : " + this.nombreOuvriers + " ("
         + this.nombreOuvriers * 100 / nombreTotalFourmiAdultes + "%)";
     res += "\n\t- Nombre de soldats : " + this.nombreSoldats + " ("
@@ -206,6 +236,12 @@ public class Fourmiliere {
     return nombreNymphes;
   }
 
+  /**
+   * Vérifie si une fourmi se trouve dans la fourmilière.
+   * 
+   * @param laFourmiATrouver La fourmi dont on veut vérifier la présence.
+   * @return Vrai si la fourmi est dans la fourmilière, faux sinon
+   */
   public boolean chercherFourmi(Fourmi laFourmiATrouver) {
     if (laFourmiATrouver == null) {
       return false;
