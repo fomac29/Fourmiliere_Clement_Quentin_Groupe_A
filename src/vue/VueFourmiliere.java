@@ -36,7 +36,6 @@ public class VueFourmiliere {
     this.composantFourmiliere = new GRect();
     // La fourmilière est un carré marron (en code RGB)
     this.composantFourmiliere.setColor(new Color(88, 41, 0));
-    this.composantFourmiliere.setPosition(new Point(247, 247));
     this.placerFourmiliere();
     this.laVueTerrain.ajouterFourmiliere(this.composantFourmiliere);
   }
@@ -46,8 +45,8 @@ public class VueFourmiliere {
    */
   public void placerFourmiliere() {
     Random random = new Random();
-    int x = random.nextInt(laVueTerrain.getLargeurTerrain());
-    int y = random.nextInt(laVueTerrain.getHauteurTerrain());
+    int x = random.nextInt(laVueTerrain.getLargeurTerrain() - this.composantFourmiliere.getHeight());
+    int y = random.nextInt(laVueTerrain.getHauteurTerrain() - this.composantFourmiliere.getWidth());
     composantFourmiliere.setPosition(new Point(x,y));
   }
 
