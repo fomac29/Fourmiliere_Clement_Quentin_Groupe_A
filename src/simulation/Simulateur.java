@@ -15,7 +15,7 @@ public class Simulateur {
     Fourmi reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
     int nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
     
-    while (reine != null || nbNymphes >= 0) {
+    while (reine != null || nbNymphes != 0) {
       reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
       nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
       System.out.println(this.leTerrain.getLaFourmiliere().toString());
