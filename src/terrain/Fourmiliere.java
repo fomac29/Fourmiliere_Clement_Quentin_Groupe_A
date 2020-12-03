@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import fourmi.Fourmi;
 
+/**
+ * Représente une des fourmis dont ont souhaite étudier le comportement
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ */
 public class Fourmiliere {
   List<Fourmi> lesFourmis;
   Fourmi laReineDesFourmis;

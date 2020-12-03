@@ -187,9 +187,9 @@ class TestFourmiliere {
     int nbNymphes = this.laFourmiliere.getNombreNymphes();
     this.laReineDesFourmis = this.laFourmiliere.getLaReineDesFourmis();
 
-    int margeErreurPourcentage = 5;
+    int margeErreurPourcentage = 3;
 
-    int nbTests = 5000;
+    int nbTests = 100;
     int nbEchecs = 0;
 
     for (int i = 0; i < nbTests; i++) {

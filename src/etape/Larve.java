@@ -15,10 +15,15 @@ public class Larve extends Etape {
     this.laFourmi.getLaFourmiliere().incrementerNombreLarves();
   }
 
+  /**
+   * Temps restant avant que la larve ne devienne une nymphe.
+   */
   int tempsRestant = 10;
 
+  /**
+   * Décrémente le temps restant et passe à l'étape d'adulte si celui-ci est écoulé
+   */
   public void next() {
-
     this.tempsRestant = this.tempsRestant - 1;
     if (this.tempsRestant == 0) {
       this.laFourmi.setlEtape(new Nymphe(super.laFourmi));
