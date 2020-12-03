@@ -22,21 +22,18 @@ public class Terrain {
     
     Adulte adulte = new Adulte();
     adulte.setLaFourmi(reine);
-    
-    // La reine est une femelle
-    this.laFourmiliere.incrementerNombreFemelles();
     adulte.setLeRole(new Reine(adulte));
     reine.setlEtape(adulte);
   }
 
   public void step() {
     this.laFourmiliere.step();
+    this.laVueTerrain.raffraichir();
     this.jourCourant++;
   }
 
   public boolean isPrintemps() {
-    int jourDeLAnnee = this.jourCourant % 365;
-    return jourDeLAnnee <= 90;
+    return (this.jourCourant % 365) <= 90;
   }
 
   public Fourmiliere getLaFourmiliere() {
@@ -47,13 +44,14 @@ public class Terrain {
     this.laFourmiliere = laFourmiliere;
   }
 
-  public VueTerrain getLaVueTerrain() {
-    return laVueTerrain;
-  }
-
   public int getJourCourant() {
     return jourCourant;
   }
-  
-  
+
+  public void setJourCourant(int jourCourant) {
+    this.jourCourant = jourCourant;
+  }
+  public VueTerrain getLaVueTerrain() {
+    return laVueTerrain;
+  }
 }

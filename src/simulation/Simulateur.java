@@ -15,13 +15,13 @@ public class Simulateur {
     Fourmi reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
     int nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
     
-    while (this.leTerrain.getJourCourant() < 100) {
+    while (reine != null || nbNymphes != 0) {
       reine = this.leTerrain.getLaFourmiliere().getLaReineDesFourmis();
       nbNymphes = this.leTerrain.getLaFourmiliere().getNombreNymphes();
-      //System.out.println(this.leTerrain.getLaFourmiliere().toString());
+      System.out.println(this.leTerrain.getLaFourmiliere().toString());
       this.leTerrain.step();
       try {
-        Thread.sleep(100);
+        Thread.sleep(10);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
