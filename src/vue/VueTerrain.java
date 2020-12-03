@@ -41,6 +41,7 @@ public class VueTerrain {
    */
   public VueTerrain() {
     fenetre = new GSpace("Terrain", new Dimension(550, 550));
+    fenetre.setColor(Color.yellow);
     fenetre.open();
   }
 
@@ -76,11 +77,11 @@ public class VueTerrain {
   }
 
   /**
-   * Rafaichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
+   * Rafraichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
    * actualisés
    */
-  public void raffraichir() {
-    this.terrain.repaint();
+  public void rafraichir() {
+    this.fenetre.repaint();
   }
 
   /**
@@ -92,38 +93,26 @@ public class VueTerrain {
     this.terrain.removeElement(composantGraphiqueFourmi);
   }
 
+  /**
+   * 
+   * @param composantGraphiqueProie
+   */
   public void ajouterProie(GRect composantGraphiqueProie) {
     this.fenetre.addElement(composantGraphiqueProie);
-    composantGraphiqueProie.repaint();
   }
 
   public void supprimerProie(GRect composantGraphiqueProie) {
     this.terrain.removeElement(composantGraphiqueProie);
   }
 
-  /**
-   * Permet d'accéder à la référence du composant graphique représentant le terrain.
-   * 
-   * @return Le rectangle représentant le terrain.
-   */
   public GBounded getTerrain() {
     return terrain;
   }
 
-  /**
-   * Permet de connaitre la hauteur du composant graphique représentant le terrain.
-   * 
-   * @return La hauteur du rectangle représenannt le terrain
-   */
   public int getHauteurTerrain() {
     return hauteurTerrain;
   }
 
-  /**
-   * Permet de connaitre la largeur du composant graphique représentant le terrain.
-   * 
-   * @return La largeur du rectangle représenannt le terrain
-   */
   public int getLargeurTerrain() {
     return largeurTerrain;
   }
