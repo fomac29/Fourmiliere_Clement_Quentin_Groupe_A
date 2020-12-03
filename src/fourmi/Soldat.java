@@ -2,11 +2,14 @@ package fourmi;
 
 import etape.Adulte;
 import terrain.Fourmiliere;
+import vue.VueSoldat;
 
 public class Soldat extends Role {
 
   public Soldat(Adulte adulte) {
     super(adulte);
+    this.lAdulte.setComposantGraphique(new VueSoldat(
+        this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
   @Override
@@ -16,6 +19,10 @@ public class Soldat extends Role {
       this.mourir();
       Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
       laFourmiliere.decrementerNombreSoldats();
+    }
+    
+    else {
+      this.lAdulte.deplacerFourmi();
     }
   }
 

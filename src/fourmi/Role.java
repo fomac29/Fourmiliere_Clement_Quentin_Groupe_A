@@ -12,11 +12,12 @@ public abstract class Role {
     this.esperanceDeVie = (int) (Math.random() * (912 - 548)) + 548;
   }
   
-  public void mourir() {
+  protected void mourir() {
     Fourmi laFourmi = this.lAdulte.getLaFourmi();
     Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
+    laFourmiliere.supprimerFourmi(laFourmi);
     laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
-    laFourmiliere.getLeTerrain().getLaVueTerrain().supprimerFourmi(this.lAdulte.getComposantGraphique());
+    this.lAdulte.getComposantGraphique().supprimerFourmi();
   }
 
   public Adulte getlAdulte() {
@@ -25,6 +26,14 @@ public abstract class Role {
 
   public void setlAdulte(Adulte lAdulte) {
     this.lAdulte = lAdulte;
+  }
+
+  public Integer getEsperanceDeVie() {
+    return esperanceDeVie;
+  }
+
+  public void setEsperanceDeVie(Integer esperanceDeVie) {
+    this.esperanceDeVie = esperanceDeVie;
   }
 
   public abstract void step();
