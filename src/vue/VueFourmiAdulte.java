@@ -5,7 +5,7 @@ import java.util.Random;
 import graphicLayer.GOval;
 
 /**
- * Classe permettant de gérer les composants graphiques des fourmis Adultes et de les séparer de
+ * Classe permettant de gérer les composants graphiques des fourmis adultes et de les séparer de
  * leurs modèles.
  * 
  * @author Clément Stoliaroff, Quentin Tassy
@@ -102,20 +102,10 @@ public abstract class VueFourmiAdulte {
     this.laVueDeLaFourmiliere.getLaVueTerrain().supprimerFourmi(composantGraphique);
   }
 
-  /**
-   * Permet d'accéder à la référence du composant graphique représentant la fourmi adulte.
-   * 
-   * @return Le cercle représentant la fourmi adulte.
-   */
   public GOval composantGraphique() {
     return this.composantGraphique;
   }
 
-  /**
-   * Permet de modifier le composant graphique représentant la fourmi adulte.
-   * 
-   * @param composantGraphique Le nouveau cercle devant représenter la fourmi adulte.
-   */
   public void setComposantGraphique(GOval composantGraphique) {
     this.composantGraphique = composantGraphique;
   }

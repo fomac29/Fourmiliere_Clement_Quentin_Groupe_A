@@ -77,7 +77,7 @@ public class VueTerrain {
   }
 
   /**
-   * Rafraichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
+   * Rafraichit l'affichage de la fenêtre d'application afin que les composant à l'intérieur soient
    * actualisés
    */
   public void rafraichir() {
@@ -94,15 +94,19 @@ public class VueTerrain {
   }
 
   /**
-   * 
-   * @param composantGraphiqueProie
+   * Ajoute graphiquement la proie dans la fenêtre d'application.
+   * @param composantGraphiqueProie La proie à ajouter.
    */
   public void ajouterProie(GRect composantGraphiqueProie) {
     this.fenetre.addElement(composantGraphiqueProie);
   }
 
+  /**
+   * Supprime graphiquement la proie dans la fenêtre d'application.
+   * @param composantGraphiqueProie La proie à ajouter.
+   */
   public void supprimerProie(GRect composantGraphiqueProie) {
-    this.terrain.removeElement(composantGraphiqueProie);
+    this.fenetre.removeElement(composantGraphiqueProie);
   }
 
   public GBounded getTerrain() {
@@ -116,11 +120,11 @@ public class VueTerrain {
   public int getLargeurTerrain() {
     return largeurTerrain;
   }
-  
+
   public int getLargeurFenetre() {
     return this.fenetre.getWidth();
   }
-  
+
   public int getHauteurFenetre() {
     return this.fenetre.getHeight();
   }

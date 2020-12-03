@@ -70,21 +70,10 @@ public class VueFourmiliere {
     this.laVueTerrain.ajouterFourmi(laFourmi);
   }
 
-  /**
-   * Permet d'accéder à la référence du composant graphique représenannt la fourmilière.
-   * 
-   * @return Le rectangle représentant la fourmilière.
-   */
   public GRect getComposantFourmiliere() {
     return composantFourmiliere;
   }
 
-  /**
-   * Permet d'accéder à la reférence vers la représentation graphique du terrain contenant la
-   * représentation graphique de la fourmilière.
-   * 
-   * @return La référence vers la représentation graphique du terrain.
-   */
   public VueTerrain getLaVueTerrain() {
     return this.laVueTerrain;
   }

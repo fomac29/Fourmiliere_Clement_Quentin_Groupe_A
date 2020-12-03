@@ -2,7 +2,6 @@ package fourmi;
 
 import etape.Adulte;
 import terrain.Fourmiliere;
-import vue.VueFourmiFemelle;
 import vue.VueFourmiReine;
 
 public class Reine extends Femelle {
@@ -18,6 +17,9 @@ public class Reine extends Femelle {
     this.laFourmiliere.incrementerNombreFemelles();
   }
 
+  /**
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   */
   @Override
   public void step() {
     this.esperanceDeVie--;
@@ -37,8 +39,7 @@ public class Reine extends Femelle {
   }
 
   protected void mourir() {
-    Fourmi laFourmi = this.lAdulte.getLaFourmi();
-    laFourmi.getLaFourmiliere().supprimerReine();
+    this.lAdulte.getLaFourmi().getLaFourmiliere().supprimerReine();
     laFourmiliere.decrementerNombreFemelles();
     System.out.println("Reine morte");
   }
