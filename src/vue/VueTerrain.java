@@ -31,8 +31,8 @@ public class VueTerrain {
   private GSpace fenetre;
 
   /**
-   * Rectangle représentant le terrain qui contiendra les éléments graphiques
-   * (fourmis, proies, etc...).
+   * Rectangle représentant le terrain qui contiendra les éléments graphiques (fourmis, proies,
+   * etc...).
    */
   private GBounded terrain;
 
@@ -73,7 +73,14 @@ public class VueTerrain {
    */
   public void ajouterFourmi(GOval composantGraphiqueFourmi) {
     this.terrain.addElement(composantGraphiqueFourmi);
-    composantGraphiqueFourmi.repaint();
+  }
+
+  /**
+   * Rafaichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
+   * actualisés 
+   */
+  public void raffraichir() {
+    this.terrain.repaint();
   }
 
   /**
