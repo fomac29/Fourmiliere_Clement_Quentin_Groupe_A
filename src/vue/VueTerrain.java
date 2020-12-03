@@ -16,13 +16,10 @@ public class VueTerrain {
   private GBounded terrain;
   
   public VueTerrain() {
-    this.InitialiserVue();
-  }
-  
-  public void InitialiserVue() {
     fenetre = new GSpace("Terrain", new Dimension(550, 550));
     fenetre.open();
   }
+
   
   public void ajouterTerrain() {
     terrain = new GBounded();

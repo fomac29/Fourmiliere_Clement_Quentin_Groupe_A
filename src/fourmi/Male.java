@@ -16,13 +16,13 @@ public class Male extends Sexue {
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
-      this.mourir();
+      this.lAdulte.mourir();
       Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
       laFourmiliere.decrementerNombreMales();
     }
     
     else {
-      this.lAdulte.deplacerFourmi();
+      this.lAdulte.deplacerComposantFourmi();
     }
   }
 }
