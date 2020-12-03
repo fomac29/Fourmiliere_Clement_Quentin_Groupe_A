@@ -239,9 +239,9 @@ class TestFourmiliere {
       double pourcentageEchecsSimulationEnCours =
           (nbEchecsSimulationEnCours * 100) / nbTestsSimulationEnCours;
 
-      System.err.println(
-          "Test numéro " + (i + 1) + " Nombre d'échecs du test : " + nbEchecsSimulationEnCours + " "
-              + "Pourcentage d'échec du test : " + pourcentageEchecsSimulationEnCours + "%");
+      System.err.println("Simulation numéro " + (i + 1) + " : Nombre d'échecs : "
+          + nbEchecsSimulationEnCours + " Nombre de tests : " + nbTestsSimulationEnCours
+          + " Pourcentage d'échec du test : " + pourcentageEchecsSimulationEnCours + "%");
 
       if (pourcentageEchecsSimulationEnCours > 5) {
         nbEchecs++;
