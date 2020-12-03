@@ -28,6 +28,7 @@ public class Terrain {
 
   public void step() {
     this.laFourmiliere.step();
+    this.laVueTerrain.raffraichir();
     this.jourCourant++;
   }
 
