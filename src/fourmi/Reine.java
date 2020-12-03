@@ -34,6 +34,6 @@ public class Reine extends Femelle {
     Fourmi laFourmi = this.lAdulte.getLaFourmi();
     laFourmi.getLaFourmiliere().supprimerReine();
     fourmiliere.decrementerNombreFemelles();
-    System.out.println("Reine morte");
+    //System.out.println("Reine morte");
   }
 }

@@ -35,13 +35,13 @@ public class Adulte extends Etape {
      * On tire un pourcentage entre 60% et 70% au hasard Puis on tire un nombre au hasard : si
      * celui-ci est inférieur ou égal au pourcentage tiré, alors on attribut le rôle Ouvrier
      */
-    if (unNombreAleatoire <= laFourmiliere.getPourcentageOuvriere()) {
+    if (unNombreAleatoire <= laFourmiliere.getPourcentageOuvrieres()) {
       this.leRole = new Ouvrier(this);
       this.laFourmi.getLaFourmiliere().incrementerNombreOuvriers();
     }
 
     // Même chose entre 20% et 25% pour les fourmis soldats
-    else if (unNombreAleatoire <= laFourmiliere.getPourcentageSoldat()) {
+    else if (unNombreAleatoire <= laFourmiliere.getPourcentageSoldats()) {
       this.leRole = new Soldat(this);
       this.laFourmi.getLaFourmiliere().incrementerNombreSoldats();
     }

@@ -28,5 +28,13 @@ public abstract class Role {
     this.lAdulte = lAdulte;
   }
 
+  public Integer getEsperanceDeVie() {
+    return esperanceDeVie;
+  }
+
+  public void setEsperanceDeVie(Integer esperanceDeVie) {
+    this.esperanceDeVie = esperanceDeVie;
+  }
+
   public abstract void step();
 }
