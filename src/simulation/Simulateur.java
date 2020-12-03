@@ -21,7 +21,7 @@ public class Simulateur {
       System.out.println(this.leTerrain.getLaFourmiliere().toString());
       this.leTerrain.step();
       try {
-        Thread.sleep(500);
+        Thread.sleep(10);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }

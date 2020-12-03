@@ -3,7 +3,6 @@ package terrain;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import fourmi.Fourmi;
 import vue.VueFourmiliere;
 
