@@ -100,7 +100,7 @@ public class VueProie {
    * @return boolean
    */
   public boolean verifierPositionX(int pos) {
-    return pos < (laVueTerrain.getLargeurTerrain()+50);
+    return pos < (laVueTerrain.getLargeurFenetre()+50);
   }
   
   /**
@@ -109,7 +109,7 @@ public class VueProie {
    * @return boolean
    */
   public boolean verifierPositionY(int pos) {
-    return pos < (laVueTerrain.getHauteurTerrain()+50);
+    return pos < (laVueTerrain.getHauteurFenetre()+50);
   }
   
   public void supprimerProie() {
