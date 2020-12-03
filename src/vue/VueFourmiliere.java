@@ -58,10 +58,10 @@ public class VueFourmiliere {
   public void ajouterFourmi(GOval laFourmi) {
     // On calcule la position de la fourmi pour qu'elle apparaisse au milieu de la fourmilière
     int milieurHorizontal = (int) (this.composantFourmiliere.getX()
-        + (this.composantFourmiliere.getWidth() / 2) - laFourmi.getWidth());
+        + (this.composantFourmiliere.getWidth() / 2) - (laFourmi.getWidth() / 2));
 
     int milieurVertical = (int) (this.composantFourmiliere.getY()
-        + (this.composantFourmiliere.getHeight() / 2) - laFourmi.getHeight());
+        + (this.composantFourmiliere.getHeight() / 2) - (laFourmi.getHeight() / 2));
 
     // On place la fourmi au milieu de la fourmilière
     laFourmi.setPosition(new Point(milieurHorizontal, milieurVertical));

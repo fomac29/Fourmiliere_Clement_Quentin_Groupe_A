@@ -7,18 +7,26 @@ import vue.VueFourmiReine;
 public class Reine extends Femelle {
 
   private Fourmiliere laFourmiliere;
-  
+
+  /**
+   * Créé la reine des fourmis avec son composant graphique, recalcule son espérance de vie
+   * (Contrairement aux autres, celle-ci vit entre 4 et 10 ans).
+   * 
+   * @param lAdulte Permet d'accéder à la fourmi associée.
+   */
   public Reine(Adulte lAdulte) {
     super(lAdulte);
-    this.lAdulte.setComposantGraphique(new VueFourmiReine(
-        this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
+    this.lAdulte.setComposantGraphique(
+        new VueFourmiReine(this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
     this.esperanceDeVie = (int) (Math.random() * (3650 - 1460)) + 1460;
     this.laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
+    // La reine des fourmis est une femelle
     this.laFourmiliere.incrementerNombreFemelles();
   }
 
   /**
-   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   * La reine des fourmis meure si elle atteint la fin de sa vie, sinon elle ponds si on est au
+   * printemps
    */
   @Override
   public void step() {
@@ -30,6 +38,9 @@ public class Reine extends Femelle {
     }
   }
 
+  /**
+   * La reine ponds entre 10 et 20 oeufs par portée
+   */
   protected void pondre() {
     int nbPonteJour = (int) ((Math.random() * (20 - 10)) + 10);
     for (int nbPonte = 0; nbPonte < nbPonteJour; nbPonte++) {
@@ -38,9 +49,14 @@ public class Reine extends Femelle {
     }
   }
 
+  /**
+   * Supprime la reine des  fourmis de la fourmiliere et fait disparaitre son composant graphique
+   */
   protected void mourir() {
     this.lAdulte.getLaFourmi().getLaFourmiliere().supprimerReine();
+    // La reine des fourmis est une femelle
     laFourmiliere.decrementerNombreFemelles();
+    this.lAdulte.getComposantGraphique().supprimerFourmi();
     System.out.println("Reine morte");
   }
 }
