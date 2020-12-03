@@ -29,7 +29,6 @@ public class Terrain {
   public void step() {
     this.laFourmiliere.step();
     this.jourCourant++;
-    this.laVueTerrain.raffraichir();
   }
 
   public boolean isPrintemps() {

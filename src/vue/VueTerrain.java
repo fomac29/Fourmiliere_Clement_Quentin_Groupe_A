@@ -39,10 +39,7 @@ public class VueTerrain {
   
   public void ajouterFourmi(GOval composantGraphiqueFourmi) {
     this.terrain.addElement(composantGraphiqueFourmi);
-  }
-  
-  public void raffraichir() {
-    this.terrain.repaint();
+    composantGraphiqueFourmi.repaint();
   }
   
   public void supprimerFourmi(GOval composantGraphiqueFourmi) {
