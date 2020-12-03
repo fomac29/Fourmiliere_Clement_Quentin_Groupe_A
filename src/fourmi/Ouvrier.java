@@ -1,23 +1,15 @@
 package fourmi;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import etape.Adulte;
-import graphicLayer.GOval;
-import graphicLayer.GRect;
 import terrain.Fourmiliere;
+import vue.VueOuvrier;
 
 public class Ouvrier extends Role {
-  
+
   public Ouvrier(Adulte adulte) {
     super(adulte);
-    this.representationGraphique = new GOval();
-    this.representationGraphique.setColor(Color.orange);
-    this.representationGraphique.setDimension(new Dimension(10, 10));
-    GRect laVueTerrain = this.lAdulte.getLaFourmi().getLaFourmiliere().getLeTerrain().getLaVueTerrain().
-    getTerrain();
-    laVueTerrain.addElement(this.representationGraphique);
-    laVueTerrain.repaint();
+    this.lAdulte.setComposantGraphique(new VueOuvrier(
+        this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
   @Override
@@ -28,9 +20,9 @@ public class Ouvrier extends Role {
       Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
       laFourmiliere.decrementerNombreOuvriers();
     }
-    
+
     else {
-      
+      this.lAdulte.deplacerFourmi();
     }
   }
 }

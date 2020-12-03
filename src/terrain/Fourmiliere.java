@@ -11,6 +11,7 @@ public class Fourmiliere {
   Fourmi laReineDesFourmis;
 
   Terrain leTerrain;
+  VueFourmiliere laVueFourmiliere;
 
   private int nombreOeufs = 0;
   private int nombreLarves = 0;
@@ -28,9 +29,11 @@ public class Fourmiliere {
    */
   private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-  public Fourmiliere(Fourmi reine) {
+  public Fourmiliere(Terrain terrain) {
     this.lesFourmis = new ArrayList<Fourmi>();
-    this.laReineDesFourmis = reine;
+    this.leTerrain = terrain;
+    this.laVueFourmiliere = new VueFourmiliere(this.leTerrain.getLaVueTerrain());
+    this.laReineDesFourmis = null;
     // La reine est une femelle
     this.incrementerNombreFemelles();
     this.pourcentageOuvrieres = (Math.random() * (0.7 - 0.6)) + 0.6;
@@ -166,6 +169,14 @@ public class Fourmiliere {
     return nombreFemelles;
   }
 
+  public VueFourmiliere getLaVueFourmiliere() {
+    return laVueFourmiliere;
+  }
+
+  public void setLaVueFourmiliere(VueFourmiliere laVueFourmiliere) {
+    this.laVueFourmiliere = laVueFourmiliere;
+  }
+
   @Override
   public String toString() {
     int nombreTotalFourmiAdultes =
@@ -194,8 +205,6 @@ public class Fourmiliere {
 
     return res;
   }
-
-  
   
   public void setLaReineDesFourmis(Fourmi laReineDesFourmis) {
     this.laReineDesFourmis = laReineDesFourmis;
@@ -226,6 +235,4 @@ public class Fourmiliere {
 
     return false;
   }
-
-
 }

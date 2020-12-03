@@ -1,18 +1,13 @@
 package etape;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.Random;
 import fourmi.Femelle;
 import fourmi.Fourmi;
 import fourmi.Male;
 import fourmi.Ouvrier;
 import fourmi.Role;
 import fourmi.Soldat;
-import graphicLayer.GOval;
 import terrain.Fourmiliere;
-import vue.VueTerrain;
+import vue.VueFourmiAdulte;
 
 /**
  * Quatrième et étape de la vie d'une fourmi
@@ -22,13 +17,11 @@ import vue.VueTerrain;
  */
 public class Adulte extends Etape {
   private Role leRole;
-  private GOval composantGraphique = new GOval();
+  private VueFourmiAdulte composantGraphique;
 
   public Adulte(Fourmi uneFourmi) {
     super(uneFourmi);
-    
-    this.ajouterFourmi();
-    
+
     double unNombreAleatoire = Math.random();
     Fourmiliere laFourmiliere = this.getLaFourmi().getLaFourmiliere();
     /*
@@ -68,59 +61,15 @@ public class Adulte extends Etape {
   
   @Override
   public void step() {
-    this.deplacerFourmi();
     this.leRole.step();
-  }
-
-  public void ajouterFourmi() {
-    composantGraphique = new GOval();
-    composantGraphique.setPosition(new Point(247,247));
-    composantGraphique.setDimension(new Dimension(6, 6));
-    composantGraphique.setColor(Color.yellow);
-    
-    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
-    laVueDuTerrain.ajouterFourmi(composantGraphique);
   }
   
   public void deplacerFourmi() {
-    Random random = new Random();
-    int unNombreAleatoire = random.nextInt(4);
-    
-    if(unNombreAleatoire == 0) {
-      int posX = this.getComposantGraphique().getX()+10;
-      if(this.verifierPosition(posX)) {
-        composantGraphique.setX(posX);
-      }
-    }else if(unNombreAleatoire == 1) {
-      int posX = this.getComposantGraphique().getX()-10;
-      if(this.verifierPosition(posX)) {
-        composantGraphique.setX(posX);
-      }
-    }else if(unNombreAleatoire == 2) {
-      int posY = this.getComposantGraphique().getY()+10;
-      if(this.verifierPosition(posY)) {
-        composantGraphique.setY(posY);
-      }
-    }else if(unNombreAleatoire == 3){
-      int posY = this.getComposantGraphique().getY()-10;
-      if(this.verifierPosition(posY)) {
-        composantGraphique.setY(posY);
-      }
-    }
-    
-  }
-  
-  public boolean verifierPosition(int pos) {
-    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
-    if(pos >= 0 && pos <= laVueDuTerrain.getHauteurTerrain()) {
-      return true;
-    }
-    return false;
+    this.composantGraphique.seDeplacer();
   }
   
   public void supprimerFourmi() {
-    VueTerrain laVueDuTerrain = this.laFourmi.getLaFourmiliere().getLeTerrain().getLaVueTerrain();
-    laVueDuTerrain.supprimerFourmi(composantGraphique);
+    this.composantGraphique.supprimerFourmi();
   }
   
   public Role getLeRole() {
@@ -131,9 +80,11 @@ public class Adulte extends Etape {
     this.leRole = leRole;
   }
 
-  public GOval getComposantGraphique() {
+  public VueFourmiAdulte getComposantGraphique() {
     return composantGraphique;
   }
-  
-  
+
+  public void setComposantGraphique(VueFourmiAdulte composantGraphique) {
+    this.composantGraphique = composantGraphique;
+  }
 }

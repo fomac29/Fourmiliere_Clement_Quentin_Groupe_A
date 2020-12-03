@@ -52,7 +52,7 @@ class TestFourmiliere {
 
   @Test
   void testEvolutionFourmi() {
-    Fourmi laFourmis = new Fourmi();
+    Fourmi laFourmis = new Fourmi(laFourmiliere);
 
     laFourmis.setLaFourmiliere(this.laFourmiliere);
 

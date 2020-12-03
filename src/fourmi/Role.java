@@ -6,18 +6,18 @@ import terrain.Fourmiliere;
 public abstract class Role {
   Adulte lAdulte;
   Integer esperanceDeVie;
-  GOval representationGraphique;
   
   public Role(Adulte adulte) {
     this.lAdulte = adulte;
     this.esperanceDeVie = (int) (Math.random() * (912 - 548)) + 548;
   }
   
-  public void mourir() {
+  protected void mourir() {
     Fourmi laFourmi = this.lAdulte.getLaFourmi();
     Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
+    laFourmiliere.supprimerFourmi(laFourmi);
     laFourmi.getLaFourmiliere().supprimerFourmi(laFourmi);
-    laFourmiliere.getLeTerrain().getLaVueTerrain().supprimerFourmi(this.lAdulte.getComposantGraphique());
+    this.lAdulte.getComposantGraphique().supprimerFourmi();
   }
 
   public Adulte getlAdulte() {

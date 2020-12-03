@@ -26,28 +26,24 @@ public class VueTerrain {
   
   public void ajouterTerrain() {
     terrain = new GBounded();
-    terrain.setColor(Color.GRAY);
+    terrain.setColor(Color.green);
     terrain.setPosition(new Point(30, 30));
     terrain.setDimension(new Dimension(500, 500));
     
     fenetre.addElement(terrain);
   }
   
-  public void ajouterFourmiliere() {
-    GRect fourmiliere = new GRect();
-    fourmiliere.setColor(Color.BLACK);
-    fourmiliere.setPosition(new Point(245, 245));
-    fourmiliere.setDimension(new Dimension(10, 10));
-    this.terrain.addElement(fourmiliere);
+  public void ajouterFourmiliere(GRect composantGraphiqueFourmiliere) {
+    this.terrain.addElement(composantGraphiqueFourmiliere);
   }
   
-  public void ajouterFourmi(GOval composantGraphique) {
-    this.terrain.addElement(composantGraphique);
-    composantGraphique.repaint();
+  public void ajouterFourmi(GOval composantGraphiqueFourmi) {
+    this.terrain.addElement(composantGraphiqueFourmi);
+    composantGraphiqueFourmi.repaint();
   }
   
-  public void supprimerFourmi(GOval composantGraphique) {
-    this.terrain.removeElement(composantGraphique);
+  public void supprimerFourmi(GOval composantGraphiqueFourmi) {
+    this.terrain.removeElement(composantGraphiqueFourmi);
   }
 
   public GBounded getTerrain() {
@@ -61,7 +57,4 @@ public class VueTerrain {
   public int getLargeurTerrain() {
     return largeurTerrain;
   }
-  
-  
-  
 }
