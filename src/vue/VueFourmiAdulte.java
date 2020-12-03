@@ -4,6 +4,13 @@ import java.awt.Dimension;
 import java.util.Random;
 import graphicLayer.GOval;
 
+/**
+ * Classe permettant de gérer les composants graphiques des fourmis Adultes et de le séparer de leurs
+ * modèles.
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ *
+ */
 public abstract class VueFourmiAdulte {
   protected GOval composantGraphique;
   protected VueFourmiliere laVueDeLaFourmiliere;
