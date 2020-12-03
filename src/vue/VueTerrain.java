@@ -42,6 +42,15 @@ public class VueTerrain {
   public void supprimerFourmi(GOval composantGraphiqueFourmi) {
     this.terrain.removeElement(composantGraphiqueFourmi);
   }
+  
+  public void ajouterProie(GRect composantGraphiqueProie) {
+    this.terrain.addElement(composantGraphiqueProie);
+    composantGraphiqueProie.repaint();
+  }
+  
+  public void supprimerProie(GRect composantGraphiqueProie) {
+    this.terrain.removeElement(composantGraphiqueProie);
+  }
 
   public GBounded getTerrain() {
     return terrain;

@@ -6,7 +6,7 @@ public class VueSoldat extends VueFourmiAdulte {
 
   public VueSoldat(VueFourmiliere laVueDeLaFourmiliere) {
     super(laVueDeLaFourmiliere);
-    this.composantGraphique.setColor(Color.red);
+    this.composantGraphique.setColor(Color.darkGray);
   }
 
 }

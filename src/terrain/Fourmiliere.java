@@ -3,15 +3,17 @@ package terrain;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import fourmi.Fourmi;
 import vue.VueFourmiliere;
 
 public class Fourmiliere {
-  List<Fourmi> lesFourmis;
-  Fourmi laReineDesFourmis;
+  private List<Fourmi> lesFourmis;
+  private List<Proie> lesProies;
+  private Fourmi laReineDesFourmis;
 
-  Terrain leTerrain;
-  VueFourmiliere laVueFourmiliere;
+  private Terrain leTerrain;
+  private VueFourmiliere laVueFourmiliere;
 
   private int nombreOeufs = 0;
   private int nombreLarves = 0;
@@ -31,51 +33,33 @@ public class Fourmiliere {
 
   public Fourmiliere(Terrain terrain) {
     this.lesFourmis = new ArrayList<Fourmi>();
+    this.lesProies = new ArrayList<Proie>();
     this.leTerrain = terrain;
     this.laVueFourmiliere = new VueFourmiliere(this.leTerrain.getLaVueTerrain());
-    this.laReineDesFourmis = null;
-    // La reine est une femelle
-    this.incrementerNombreFemelles();
+    
     this.pourcentageOuvrieres = (Math.random() * (0.7 - 0.6)) + 0.6;
     this.pourcentageSoldat =
         (Math.random() * (pourcentageOuvrieres + 0.25 - (pourcentageOuvrieres + 0.2)))
             + (pourcentageOuvrieres + 0.2);
   }
 
-  public Terrain getLeTerrain() {
-    return leTerrain;
-  }
-
-  public void setLeTerrain(Terrain leTerrain) {
-    this.leTerrain = leTerrain;
-  }
-
-  public double getPourcentageOuvrieres() {
-    return pourcentageOuvrieres;
-  }
-
-  public double getPourcentageSoldats() {
-    return pourcentageSoldat;
-  }
-
-  public double getPourcentageSexues() {
-    return 1 - (this.pourcentageOuvrieres + (this.pourcentageSoldat - this.pourcentageOuvrieres));
-  }
-
-  public List<Fourmi> getLesFourmis() {
-    return lesFourmis;
-  }
-
   public void step() {
+    this.ajouterProie();
+    
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
     }
+    
+    for (int i = 0; i < this.lesProies.size(); i++) {
+      this.lesProies.get(i).step();
+    }
+    
     // si la reine n'est pas morte
     if (this.laReineDesFourmis != null) {
       this.laReineDesFourmis.step();
     }
   }
-
+ 
   public void ajouterFourmi() {
     Fourmi uneFourmi = new Fourmi(this);
     this.lesFourmis.add(uneFourmi);
@@ -84,9 +68,65 @@ public class Fourmiliere {
   public void supprimerFourmi(Fourmi uneFourmi) {
     this.lesFourmis.remove(uneFourmi);
   }
+  
+  public void ajouterProie() {
+    Proie uneProie = new Proie(this);
+    this.lesProies.add(uneProie);
+  }
+  
+  public void supprimerProie(Proie uneProie) {
+    this.lesProies.remove(uneProie);
+  }
 
   public void supprimerReine() {
     this.laReineDesFourmis = null;
+  }
+  
+  public boolean chercherFourmi(Fourmi laFourmiATrouver) {
+    if (laFourmiATrouver == null) {
+      return false;
+    }
+
+    if (this.laReineDesFourmis.equals(laFourmiATrouver)) {
+      return true;
+    }
+
+    for (Fourmi uneFourmi : this.lesFourmis) {
+      if (uneFourmi.equals(laFourmiATrouver)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+  
+  @Override
+  public String toString() {
+    int nombreTotalFourmiAdultes =
+        this.nombreOuvriers + this.nombreFemelles + this.nombreMales + this.nombreSoldats;
+
+    double affichagePourcentageOuvrieres = this.pourcentageOuvrieres * 100;
+    double affichagePourcentageSoldats =
+        (this.pourcentageSoldat - this.pourcentageOuvrieres) * 100;
+    double affichagePourcentageSexues =
+        100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
+    String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)
+        + "%, Soldats : " + df2.format(affichagePourcentageSoldats) + "%, Sexués : "
+        + df2.format(affichagePourcentageSexues) + "%) :";
+
+    res += "\n\t- Nombre d'oeufs : " + this.nombreOeufs;
+    res += "\n\t- Nombre de larves : " + this.nombreLarves;
+    res += "\n\t- Nombre de nymphes : " + this.nombreNymphes;
+    res += "\n\t- Nombre d'ouvrières : " + this.nombreOuvriers + " ("
+        + this.nombreOuvriers * 100 / nombreTotalFourmiAdultes + "%)";
+    res += "\n\t- Nombre de soldats : " + this.nombreSoldats + " ("
+        + this.nombreSoldats * 100 / nombreTotalFourmiAdultes + "%)";
+    res += "\n\t- Nombre de mâles : " + this.nombreMales + " ("
+        + this.nombreMales * 100 / nombreTotalFourmiAdultes + "%)";
+    res += "\n\t- Nombre de femelles : " + this.nombreFemelles + " ("
+        + this.nombreFemelles * 100 / nombreTotalFourmiAdultes + "%)";
+
+    return res;
   }
 
   public void incrementerNombreOeufs() {
@@ -144,6 +184,30 @@ public class Fourmiliere {
   public void decrementerNombreFemelles() {
     this.nombreFemelles--;
   }
+  
+  public Terrain getLeTerrain() {
+    return leTerrain;
+  }
+
+  public void setLeTerrain(Terrain leTerrain) {
+    this.leTerrain = leTerrain;
+  }
+
+  public double getPourcentageOuvrieres() {
+    return pourcentageOuvrieres;
+  }
+
+  public double getPourcentageSoldats() {
+    return pourcentageSoldat;
+  }
+
+  public double getPourcentageSexues() {
+    return 1 - (this.pourcentageOuvrieres + (this.pourcentageSoldat - this.pourcentageOuvrieres));
+  }
+
+  public List<Fourmi> getLesFourmis() {
+    return lesFourmis;
+  }
 
   public int getNombreOeufs() {
     return nombreOeufs;
@@ -176,35 +240,6 @@ public class Fourmiliere {
   public void setLaVueFourmiliere(VueFourmiliere laVueFourmiliere) {
     this.laVueFourmiliere = laVueFourmiliere;
   }
-
-  @Override
-  public String toString() {
-    int nombreTotalFourmiAdultes =
-        this.nombreOuvriers + this.nombreFemelles + this.nombreMales + this.nombreSoldats;
-
-    double affichagePourcentageOuvrieres = this.pourcentageOuvrieres * 100;
-    double affichagePourcentageSoldats =
-        (this.pourcentageSoldat - this.pourcentageOuvrieres) * 100;
-    double affichagePourcentageSexues =
-        100 - (affichagePourcentageOuvrieres + affichagePourcentageSoldats);
-    String res = "Fourmilière (Ouvrières : " + df2.format(affichagePourcentageOuvrieres)
-        + "%, Soldats : " + df2.format(affichagePourcentageSoldats) + "%, Sexués : "
-        + df2.format(affichagePourcentageSexues) + "%) :";
-
-    res += "\n\t- Nombre d'oeufs : " + this.nombreOeufs;
-    res += "\n\t- Nombre de larves : " + this.nombreLarves;
-    res += "\n\t- Nombre de nymphes : " + this.nombreNymphes;
-    res += "\n\t- Nombre d'ouvrières : " + this.nombreOuvriers + " ("
-        + this.nombreOuvriers * 100 / nombreTotalFourmiAdultes + "%)";
-    res += "\n\t- Nombre de soldats : " + this.nombreSoldats + " ("
-        + this.nombreSoldats * 100 / nombreTotalFourmiAdultes + "%)";
-    res += "\n\t- Nombre de mâles : " + this.nombreMales + " ("
-        + this.nombreMales * 100 / nombreTotalFourmiAdultes + "%)";
-    res += "\n\t- Nombre de femelles : " + this.nombreFemelles + " ("
-        + this.nombreFemelles * 100 / nombreTotalFourmiAdultes + "%)";
-
-    return res;
-  }
   
   public void setLaReineDesFourmis(Fourmi laReineDesFourmis) {
     this.laReineDesFourmis = laReineDesFourmis;
@@ -218,21 +253,5 @@ public class Fourmiliere {
     return nombreNymphes;
   }
 
-  public boolean chercherFourmi(Fourmi laFourmiATrouver) {
-    if (laFourmiATrouver == null) {
-      return false;
-    }
-
-    if (this.laReineDesFourmis.equals(laFourmiATrouver)) {
-      return true;
-    }
-
-    for (Fourmi uneFourmi : this.lesFourmis) {
-      if (uneFourmi.equals(laFourmiATrouver)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
+  
 }

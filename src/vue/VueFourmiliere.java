@@ -3,6 +3,7 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Random;
 import graphicLayer.GOval;
 import graphicLayer.GRect;
 
@@ -16,9 +17,18 @@ public class VueFourmiliere {
     this.composantFourmiliere = new GRect();
     this.composantFourmiliere.setColor(new Color(88, 41, 0));
     this.composantFourmiliere.setPosition(new Point(247, 247));
-    this.composantFourmiliere.setDimension(new Dimension(50, 50));
-    //this.composantFourmiliere.
+    this.placerFourmiliere();
     this.laVueTerrain.ajouterFourmiliere(this.composantFourmiliere);
+  }
+  
+  /**
+   * Place la fourmiliere de maniere aléatoire sur le terrain.
+   */
+  public void placerFourmiliere() {
+    Random random = new Random();
+    int x = random.nextInt(laVueTerrain.getLargeurTerrain());
+    int y = random.nextInt(laVueTerrain.getHauteurTerrain());
+    composantFourmiliere.setPosition(new Point(x,y));
   }
 
   public void ajouterFourmi(GOval laFourmi) {

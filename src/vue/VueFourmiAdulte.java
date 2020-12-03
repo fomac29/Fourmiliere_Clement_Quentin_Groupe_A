@@ -20,28 +20,28 @@ public abstract class VueFourmiAdulte {
     int unNombreAleatoire = random.nextInt(4);
 
     if (unNombreAleatoire == 0) {
-      int posX = this.getComposantGraphique().getX() + 10;
+      int posX = this.composantGraphique.getX() + 10;
       if (this.verifierPositionX(posX)) {
         composantGraphique.setX(posX);
       }
     } else if (unNombreAleatoire == 1) {
-      int posX = this.getComposantGraphique().getX() - 10;
+      int posX = this.composantGraphique.getX() - 10;
       if (this.verifierPositionX(posX)) {
         composantGraphique.setX(posX);
       }
     } else if (unNombreAleatoire == 2) {
-      int posY = this.getComposantGraphique().getY() + 10;
+      int posY = this.composantGraphique.getY() + 10;
       if (this.verifierPositionY(posY)) {
         composantGraphique.setY(posY);
       }
     } else if (unNombreAleatoire == 3) {
-      int posY = this.getComposantGraphique().getY() - 10;
+      int posY = this.composantGraphique.getY() - 10;
       if (this.verifierPositionY(posY)) {
         composantGraphique.setY(posY);
       }
     }
   }
-
+  
   public boolean verifierPositionX(int pos) {
     return (pos > 0 && pos < (laVueDeLaFourmiliere.getLaVueTerrain().getLargeurTerrain()
         - this.composantGraphique.getWidth()));
@@ -56,7 +56,7 @@ public abstract class VueFourmiAdulte {
     laVueDeLaFourmiliere.getLaVueTerrain().supprimerFourmi(composantGraphique);
   }
 
-  public GOval getComposantGraphique() {
+  public GOval composantGraphique() {
     return composantGraphique;
   }
 
