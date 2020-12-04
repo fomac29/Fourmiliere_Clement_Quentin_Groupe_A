@@ -28,7 +28,7 @@ public class Terrain {
    * Nombre de jours écoulés depuis le début de la simulation.
    */
   private int jourCourant;
-  
+
   private List<Proie> lesProies;
 
   /**
@@ -38,7 +38,7 @@ public class Terrain {
   public Terrain() {
     this.laVueTerrain = new VueTerrain();
     this.laVueTerrain.ajouterTerrain();
-    
+
     this.lesProies = new ArrayList<Proie>();
 
     this.jourCourant = 0;
@@ -59,24 +59,25 @@ public class Terrain {
   public void step() {
     this.ajouterProie();
     this.laFourmiliere.step();
-    
+
     for (int i = 0; i < this.lesProies.size(); i++) {
       this.lesProies.get(i).step();
     }
-    
+
     this.laVueTerrain.rafraichir();
     this.jourCourant++;
   }
 
   /**
    * Vérifie si le jour courant est un jour de printemps.
+   * 
    * @return Vrai si c'est le printemps, faux sinon
    */
   public boolean isPrintemps() {
     // Le printemps dure 90 jours dans l'année
     return (this.jourCourant % 365) <= 90;
   }
-  
+
   /**
    * Ajoute une nouvelle proie dans la fourmilière.
    */
