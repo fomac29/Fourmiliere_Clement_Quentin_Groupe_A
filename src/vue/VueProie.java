@@ -44,26 +44,26 @@ public class VueProie {
    */
   public void placerProie() {
     int valeurX, valeurY;
-    
+
     Random random = new Random();
     int valeurAleatoire = random.nextInt(4);
 
     // haut du terrain
     if (valeurAleatoire == 0) {
-      valeurX = random.nextInt(laVueTerrain.getLargeurTerrain());
+      valeurX = random.nextInt(laVueTerrain.getLargeurFenetre());
       valeurY = 0;
       // droite du terrain
     } else if (valeurAleatoire == 1) {
-      valeurX = laVueTerrain.getLargeurTerrain();
-      valeurY = random.nextInt(laVueTerrain.getHauteurTerrain());
+      valeurX = laVueTerrain.getLargeurFenetre();
+      valeurY = random.nextInt(laVueTerrain.getHauteurFenetre());
       // bas du terrain
     } else if (valeurAleatoire == 2) {
-      valeurX = random.nextInt(laVueTerrain.getLargeurTerrain());
+      valeurX = random.nextInt(laVueTerrain.getLargeurFenetre());
       valeurY = laVueTerrain.getHauteurTerrain();
       // gauche du terrain
     } else {
       valeurX = 0;
-      valeurY = random.nextInt(laVueTerrain.getHauteurTerrain());
+      valeurY = random.nextInt(laVueTerrain.getHauteurFenetre());
     }
 
     composantProie.setPosition(new Point(valeurX, valeurY));

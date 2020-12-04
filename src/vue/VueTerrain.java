@@ -3,6 +3,7 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Random;
 import graphicLayer.GBounded;
 import graphicLayer.GOval;
 import graphicLayer.GRect;
@@ -40,8 +41,8 @@ public class VueTerrain {
    * Créé et ouvre la fenêtre d'application.
    */
   public VueTerrain() {
-    fenetre = new GSpace("Terrain", new Dimension(550, 550));
-    fenetre.setColor(Color.yellow);
+    fenetre = new GSpace("Terrain", new Dimension(1000, 1000));
+    fenetre.setColor(Color.white);
     fenetre.open();
   }
 
@@ -52,7 +53,10 @@ public class VueTerrain {
   public void ajouterTerrain() {
     terrain = new GBounded();
     terrain.setColor(Color.green);
-    terrain.setPosition(new Point(30, 30));
+    Random random = new Random();
+    int x = random.nextInt(this.fenetre.getWidth() - this.getLargeurTerrain());
+    int y = random.nextInt(this.fenetre.getHeight() - this.getHauteurTerrain());
+    terrain.setPosition(new Point(x, y));
     terrain.setDimension(new Dimension(hauteurTerrain, largeurTerrain));
 
     fenetre.addElement(terrain);
@@ -95,6 +99,7 @@ public class VueTerrain {
 
   /**
    * Ajoute graphiquement la proie dans la fenêtre d'application.
+   * 
    * @param composantGraphiqueProie La proie à ajouter.
    */
   public void ajouterProie(GRect composantGraphiqueProie) {
@@ -103,6 +108,7 @@ public class VueTerrain {
 
   /**
    * Supprime graphiquement la proie dans la fenêtre d'application.
+   * 
    * @param composantGraphiqueProie La proie à ajouter.
    */
   public void supprimerProie(GRect composantGraphiqueProie) {

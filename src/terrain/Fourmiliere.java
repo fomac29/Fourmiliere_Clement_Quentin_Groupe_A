@@ -8,7 +8,6 @@ import vue.VueFourmiliere;
 
 public class Fourmiliere {
   private List<Fourmi> lesFourmis;
-  private List<Proie> lesProies;
   private Fourmi laReineDesFourmis;
 
   private Terrain leTerrain;
@@ -32,7 +31,6 @@ public class Fourmiliere {
 
   public Fourmiliere(Terrain terrain) {
     this.lesFourmis = new ArrayList<Fourmi>();
-    this.lesProies = new ArrayList<Proie>();
     this.leTerrain = terrain;
     this.laVueFourmiliere = new VueFourmiliere(this.leTerrain.getLaVueTerrain());
 
@@ -50,14 +48,9 @@ public class Fourmiliere {
    * fourmilière
    */
   public void step() {
-    this.ajouterProie();
 
     for (int i = 0; i < this.lesFourmis.size(); i++) {
       this.lesFourmis.get(i).step();
-    }
-
-    for (int i = 0; i < this.lesProies.size(); i++) {
-      this.lesProies.get(i).step();
     }
 
     // si la reine n'est pas morte
@@ -81,23 +74,6 @@ public class Fourmiliere {
    */
   public void supprimerFourmi(Fourmi uneFourmi) {
     this.lesFourmis.remove(uneFourmi);
-  }
-
-  /**
-   * Ajoute une nouvelle proie dans la fourmilière.
-   */
-  public void ajouterProie() {
-    Proie uneProie = new Proie(this);
-    this.lesProies.add(uneProie);
-  }
-
-  /**
-   * Retire une proie de la fourmilière.
-   * 
-   * @param uneProie La proie à retirer de la fourmilière.
-   */
-  public void supprimerProie(Proie uneProie) {
-    this.lesProies.remove(uneProie);
   }
 
   /**
