@@ -1,5 +1,7 @@
 package terrain;
 
+import java.util.ArrayList;
+import java.util.List;
 import etape.Adulte;
 import fourmi.Fourmi;
 import fourmi.Reine;
@@ -27,6 +29,8 @@ public class Terrain {
    */
   private int jourCourant;
 
+  private List<Proie> lesProies;
+
   /**
    * Construit le terrain avec sa représentation graphique et initialise une fourmilière contenant
    * une reine.
@@ -34,6 +38,8 @@ public class Terrain {
   public Terrain() {
     this.laVueTerrain = new VueTerrain();
     this.laVueTerrain.ajouterTerrain();
+
+    this.lesProies = new ArrayList<Proie>();
 
     this.jourCourant = 0;
 
@@ -51,18 +57,42 @@ public class Terrain {
    * Effectue un pas de simulation.
    */
   public void step() {
+    this.ajouterProie();
     this.laFourmiliere.step();
+
+    for (int i = 0; i < this.lesProies.size(); i++) {
+      this.lesProies.get(i).step();
+    }
+
     this.laVueTerrain.rafraichir();
     this.jourCourant++;
   }
 
   /**
    * Vérifie si le jour courant est un jour de printemps.
+   * 
    * @return Vrai si c'est le printemps, faux sinon
    */
   public boolean isPrintemps() {
     // Le printemps dure 90 jours dans l'année
     return (this.jourCourant % 365) <= 90;
+  }
+
+  /**
+   * Ajoute une nouvelle proie dans la fourmilière.
+   */
+  public void ajouterProie() {
+    Proie uneProie = new Proie(this);
+    this.lesProies.add(uneProie);
+  }
+
+  /**
+   * Retire une proie de la fourmilière.
+   * 
+   * @param uneProie La proie à retirer de la fourmilière.
+   */
+  public void supprimerProie(Proie uneProie) {
+    this.lesProies.remove(uneProie);
   }
 
   public Fourmiliere getLaFourmiliere() {
