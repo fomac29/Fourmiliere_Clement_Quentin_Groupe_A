@@ -1,9 +1,13 @@
 package fourmi;
 
 import etape.Adulte;
-import terrain.Fourmiliere;
 import vue.VueFourmiFemelle;
 
+/**
+ * Représente une fourmi sexuée femelle
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ */
 public class Femelle extends Sexue {
 
   public Femelle(Adulte adulte) {
@@ -12,13 +16,15 @@ public class Femelle extends Sexue {
         this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
+  /**
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   */
   @Override
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
+      this.lAdulte.getLaFourmi().getLaFourmiliere().decrementerNombreFemelles();
       this.lAdulte.mourir();
-      Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
-      laFourmiliere.decrementerNombreFemelles();
     }
     
     else {

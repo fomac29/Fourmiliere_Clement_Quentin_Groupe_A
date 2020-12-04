@@ -1,7 +1,6 @@
 package fourmi;
 
 import etape.Adulte;
-import terrain.Fourmiliere;
 import vue.VueFourmiMale;
 
 public class Male extends Sexue {
@@ -12,13 +11,15 @@ public class Male extends Sexue {
         this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
+  /**
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   */
   @Override
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
+      this.lAdulte.getLaFourmi().getLaFourmiliere().decrementerNombreMales();
       this.lAdulte.mourir();
-      Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
-      laFourmiliere.decrementerNombreMales();
     }
     
     else {

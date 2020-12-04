@@ -1,7 +1,6 @@
 package fourmi;
 
 import etape.Adulte;
-import terrain.Fourmiliere;
 import vue.VueOuvrier;
 
 public class Ouvrier extends Role {
@@ -12,13 +11,15 @@ public class Ouvrier extends Role {
         this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
+  /**
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   */
   @Override
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
+      this.lAdulte.getLaFourmi().getLaFourmiliere().decrementerNombreOuvriers();
       this.lAdulte.mourir();
-      Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
-      laFourmiliere.decrementerNombreOuvriers();
     }
 
     else {

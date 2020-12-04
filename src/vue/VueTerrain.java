@@ -3,6 +3,7 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Random;
 import graphicLayer.GBounded;
 import graphicLayer.GOval;
 import graphicLayer.GRect;
@@ -40,7 +41,8 @@ public class VueTerrain {
    * Créé et ouvre la fenêtre d'application.
    */
   public VueTerrain() {
-    fenetre = new GSpace("Terrain", new Dimension(550, 550));
+    fenetre = new GSpace("Terrain", new Dimension(1000, 1000));
+    fenetre.setColor(Color.white);
     fenetre.open();
   }
 
@@ -51,7 +53,10 @@ public class VueTerrain {
   public void ajouterTerrain() {
     terrain = new GBounded();
     terrain.setColor(Color.green);
-    terrain.setPosition(new Point(30, 30));
+    Random random = new Random();
+    int x = random.nextInt(this.fenetre.getWidth() - this.getLargeurTerrain());
+    int y = random.nextInt(this.fenetre.getHeight() - this.getHauteurTerrain());
+    terrain.setPosition(new Point(x, y));
     terrain.setDimension(new Dimension(hauteurTerrain, largeurTerrain));
 
     fenetre.addElement(terrain);
@@ -76,11 +81,11 @@ public class VueTerrain {
   }
 
   /**
-   * Rafaichit l'affichage le rectangle du terrain afin que les composant à l'intérieur soient
+   * Rafraichit l'affichage de la fenêtre d'application afin que les composant à l'intérieur soient
    * actualisés
    */
-  public void raffraichir() {
-    this.terrain.repaint();
+  public void rafraichir() {
+    this.fenetre.repaint();
   }
 
   /**
@@ -92,46 +97,40 @@ public class VueTerrain {
     this.terrain.removeElement(composantGraphiqueFourmi);
   }
 
+  /**
+   * Ajoute graphiquement la proie dans la fenêtre d'application.
+   * 
+   * @param composantGraphiqueProie La proie à ajouter.
+   */
   public void ajouterProie(GRect composantGraphiqueProie) {
     this.fenetre.addElement(composantGraphiqueProie);
-    composantGraphiqueProie.repaint();
-  }
-
-  public void supprimerProie(GRect composantGraphiqueProie) {
-    this.terrain.removeElement(composantGraphiqueProie);
   }
 
   /**
-   * Permet d'accéder à la référence du composant graphique représentant le terrain.
+   * Supprime graphiquement la proie dans la fenêtre d'application.
    * 
-   * @return Le rectangle représentant le terrain.
+   * @param composantGraphiqueProie La proie à ajouter.
    */
+  public void supprimerProie(GRect composantGraphiqueProie) {
+    this.fenetre.removeElement(composantGraphiqueProie);
+  }
+
   public GBounded getTerrain() {
     return terrain;
   }
 
-  /**
-   * Permet de connaitre la hauteur du composant graphique représentant le terrain.
-   * 
-   * @return La hauteur du rectangle représenannt le terrain
-   */
   public int getHauteurTerrain() {
     return hauteurTerrain;
   }
 
-  /**
-   * Permet de connaitre la largeur du composant graphique représentant le terrain.
-   * 
-   * @return La largeur du rectangle représenannt le terrain
-   */
   public int getLargeurTerrain() {
     return largeurTerrain;
   }
-  
+
   public int getLargeurFenetre() {
     return this.fenetre.getWidth();
   }
-  
+
   public int getHauteurFenetre() {
     return this.fenetre.getHeight();
   }
