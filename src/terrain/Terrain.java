@@ -8,31 +8,31 @@ import fourmi.Reine;
 import vue.VueTerrain;
 
 /**
- * Le terrain contient actuellement la fourmilière, et pourra en contenir plusieurs à l'avenir.
+ * Le terrain contient actuellement la fourmiliere, et pourra en contenir plusieurs a l'avenir.
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Terrain {
 
   /**
-   * La fourmilière a simuler.
+   * La fourmiliere a simuler.
    */
   private Fourmiliere laFourmiliere;
 
   /**
-   * La repésentation graphique du terrain.
+   * La repesentation graphique du terrain.
    */
   private VueTerrain laVueTerrain;
 
   /**
-   * Nombre de jours écoulés depuis le début de la simulation.
+   * Nombre de jours ecoules depuis le debut de la simulation.
    */
   private int jourCourant;
 
   private List<Proie> lesProies;
 
   /**
-   * Construit le terrain avec sa représentation graphique et initialise une fourmilière contenant
+   * Construit le terrain avec sa representation graphique et initialise une fourmiliere contenant
    * une reine.
    */
   public Terrain() {
@@ -69,17 +69,17 @@ public class Terrain {
   }
 
   /**
-   * Vérifie si le jour courant est un jour de printemps.
+   * Verifie si le jour courant est un jour de printemps.
    * 
    * @return Vrai si c'est le printemps, faux sinon
    */
   public boolean isPrintemps() {
-    // Le printemps dure 90 jours dans l'année
+    // Le printemps dure 90 jours dans l'annee
     return (this.jourCourant % 365) <= 90;
   }
 
   /**
-   * Ajoute une nouvelle proie dans la fourmilière.
+   * Ajoute une nouvelle proie dans la fourmiliere.
    */
   public void ajouterProie() {
     Proie uneProie = new Proie(this);
@@ -87,9 +87,9 @@ public class Terrain {
   }
 
   /**
-   * Retire une proie de la fourmilière.
+   * Retire une proie de la fourmiliere.
    * 
-   * @param uneProie La proie à retirer de la fourmilière.
+   * @param uneProie La proie a retirer de la fourmiliere.
    */
   public void supprimerProie(Proie uneProie) {
     this.lesProies.remove(uneProie);

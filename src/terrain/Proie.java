@@ -3,9 +3,9 @@ package terrain;
 import vue.VueProie;
 
 /**
- * Représente les proies des fourmis.
+ * Represente les proies des fourmis.
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Proie {
 
@@ -25,7 +25,7 @@ public class Proie {
   }
 
   /**
-   * Déplace la proie aléatoirement dans la fenêtre d'application
+   * Deplace la proie aleatoirement dans la fenetre d'application
    */
   public void deplacerComposantProie() {
     composantGraphique.seDeplacer();

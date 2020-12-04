@@ -3,18 +3,18 @@ package vue;
 import java.awt.Color;
 
 /**
- * Classe permettant de gérer le composant graphique d'une fourmi ouvrière et de le séparer de son
- * modèle (classe Ouvrier).
+ * Classe permettant de gerer le composant graphique d'une fourmi ouvriere et de le separer de son
+ * modele (classe Ouvrier).
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  *
  */
 public class VueOuvrier extends VueFourmiAdulte {
   /**
-   * Permet de créer le composant graphique représentant une fourmi ouvrière et de la faire
-   * apparaitre dans la fourmilière.
+   * Permet de creer le composant graphique representant une fourmi ouvriere et de la faire
+   * apparaitre dans la fourmiliere.
    * 
-   * @param laVueDeLaFourmiliere La fourmilière dans laquelle la fourmi ouvrière doit apparaitre.
+   * @param laVueDeLaFourmiliere La fourmiliere dans laquelle la fourmi ouvriere doit apparaitre.
    */
   public VueOuvrier(VueFourmiliere laVueDeLaFourmiliere) {
     super(laVueDeLaFourmiliere);
