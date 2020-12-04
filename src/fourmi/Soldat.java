@@ -3,9 +3,9 @@ package fourmi;
 import etape.Adulte;
 
 /**
- * Représente une fourmi soldat
+ * Represente une fourmi soldat
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Soldat extends Role {
 
@@ -14,7 +14,7 @@ public class Soldat extends Role {
   }
 
   /**
-   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se deplace aleatoirement
    */
   @Override
   public void step() {

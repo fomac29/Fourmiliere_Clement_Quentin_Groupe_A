@@ -4,17 +4,17 @@ import etape.Adulte;
 import terrain.Fourmiliere;
 
 /**
- * Représente la reine des fourmis
+ * Represente la reine des fourmis
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Reine extends Femelle {
 
   /**
-   * Créé la reine des fourmis avec son composant graphique, recalcule son espérance de vie
+   * Cree la reine des fourmis avec son composant graphique, recalcule son esperance de vie
    * (Contrairement aux autres, celle-ci vit entre 4 et 10 ans).
    * 
-   * @param lAdulte Permet d'accéder à la fourmi associée.
+   * @param lAdulte Permet d'acceder a la fourmi associee.
    */
   public Reine(Adulte lAdulte) {
     super(lAdulte);
@@ -36,7 +36,7 @@ public class Reine extends Femelle {
   }
 
   /**
-   * La reine ponds entre 10 et 20 oeufs par portée
+   * La reine ponds entre 10 et 20 oeufs par portee
    */
   protected void pondre() {
     int nbPonteJour = (int) ((Math.random() * (20 - 10)) + 10);
@@ -50,7 +50,7 @@ public class Reine extends Femelle {
   }
 
   /**
-   * Supprime la reine des  fourmis de la fourmiliere et fait disparaitre son composant graphique
+   * Supprime la reine des fourmis de la fourmiliere et fait disparaitre son composant graphique
    */
   protected void mourir() {
     Fourmiliere fourmiliere = super.lAdulte.getLaFourmi().getLaFourmiliere();
@@ -58,6 +58,6 @@ public class Reine extends Femelle {
     laFourmi.getLaFourmiliere().supprimerReine();
     // La reine des fourmis est une femelle
     fourmiliere.decrementerNombreFemelles();
-    //System.out.println("Reine morte");
+    // System.out.println("Reine morte");
   }
 }

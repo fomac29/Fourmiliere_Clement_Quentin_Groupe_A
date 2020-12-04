@@ -3,9 +3,9 @@ package fourmi;
 import etape.Adulte;
 
 /**
- * Représente une fourmie sexuée mâle
+ * Represente une fourmie sexuee male
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Male extends Sexue {
 
@@ -14,7 +14,7 @@ public class Male extends Sexue {
   }
 
   /**
-   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se deplace aleatoirement
    */
   @Override
   public void step() {

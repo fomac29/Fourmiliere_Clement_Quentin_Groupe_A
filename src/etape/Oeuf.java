@@ -4,9 +4,9 @@ import fourmi.Fourmi;
 import terrain.Fourmiliere;
 
 /**
- * Premiere étape de la vie d'une fourmi
+ * Premiere etape de la vie d'une fourmi
  * 
- * @author Clément Stoliaroff
+ * @author Clement Stoliaroff
  *
  */
 public class Oeuf extends Etape {
@@ -14,14 +14,14 @@ public class Oeuf extends Etape {
    * Temps restant avant que l'oeuf ne devienne une larve.
    */
   private int tempsRestant = 3;
-  
+
   public Oeuf(Fourmi uneFourmi) {
     super(uneFourmi);
   }
 
 
   /**
-   * Décrémente le temps restant et passe à l'étape de larve si celui-ci est écoulé
+   * Decremente le temps restant et passe a l'etape de larve si celui-ci est ecoule
    */
   public void next() {
     this.tempsRestant = this.tempsRestant - 1;

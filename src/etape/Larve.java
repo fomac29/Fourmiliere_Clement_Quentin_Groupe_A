@@ -4,9 +4,9 @@ import fourmi.Fourmi;
 import terrain.Fourmiliere;
 
 /**
- * Deuxième étape de la vie d'une foumi
+ * Deuxieme etape de la vie d'une foumi
  * 
- * @author Clément Stoliaroff
+ * @author Clement Stoliaroff
  *
  */
 public class Larve extends Etape {
@@ -21,7 +21,7 @@ public class Larve extends Etape {
   int tempsRestant = 10;
 
   /**
-   * Décrémente le temps restant et passe à l'étape d'adulte si celui-ci est écoulé
+   * Decremente le temps restant et passe a l'etape d'adulte si celui-ci est ecoule
    */
   public void next() {
     this.tempsRestant = this.tempsRestant - 1;
