@@ -4,9 +4,9 @@ import etape.Adulte;
 import vue.VueFourmiFemelle;
 
 /**
- * Représente une fourmi sexuée femelle
+ * Represente une fourmi sexuee femelle
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Femelle extends Sexue {
 
@@ -17,7 +17,7 @@ public class Femelle extends Sexue {
   }
 
   /**
-   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se deplace aleatoirement
    */
   @Override
   public void step() {

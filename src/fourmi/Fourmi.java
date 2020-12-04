@@ -5,18 +5,18 @@ import etape.Oeuf;
 import terrain.Fourmiliere;
 
 /**
- * Représente une des fourmis dont ont souhaite étudier le comportement
+ * Represente une des fourmis dont ont souhaite etudier le comportement
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  */
 public class Fourmi {
   private Etape lEtape;
   private Fourmiliere laFourmiliere;
 
   /**
-   * Une fourmi commence à l'état d'oeuf
+   * Une fourmi commence a l'etat d'oeuf
    * 
-   * @param fourmiliere La fourmilière dans laquelle se trouve la fourmi
+   * @param fourmiliere La fourmiliere dans laquelle se trouve la fourmi
    */
   public Fourmi(Fourmiliere fourmiliere) {
     this.laFourmiliere = fourmiliere;

@@ -3,18 +3,18 @@ package vue;
 import java.awt.Color;
 
 /**
- * Classe permettant de gérer le composant graphique d'une fourmi soldat et de le séparer de son
- * modèle (classe Soldat).
+ * Classe permettant de gerer le composant graphique d'une fourmi soldat et de le separer de son
+ * modele (classe Soldat).
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  *
  */
 public class VueSoldat extends VueFourmiAdulte {
   /**
-   * Permet de créer le composant graphique représentant une fourmi soldat et de la faire apparaitre
-   * dans la fourmilière.
+   * Permet de creer le composant graphique representant une fourmi soldat et de la faire apparaitre
+   * dans la fourmiliere.
    * 
-   * @param laVueDeLaFourmiliere La fourmilière dans laquelle la fourmi soldat doit apparaitre.
+   * @param laVueDeLaFourmiliere La fourmiliere dans laquelle la fourmi soldat doit apparaitre.
    */
   public VueSoldat(VueFourmiliere laVueDeLaFourmiliere) {
     super(laVueDeLaFourmiliere);

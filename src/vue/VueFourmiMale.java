@@ -3,19 +3,19 @@ package vue;
 import java.awt.Color;
 
 /**
- * Classe permettant de gérer le composant graphique d'une fourmi sexuée mâle et de le séparer de
- * son modèle (classe Male).
+ * Classe permettant de gerer le composant graphique d'une fourmi sexuee male et de le separer de
+ * son modele (classe Male).
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  *
  */
 public class VueFourmiMale extends VueFourmiAdulte {
 
   /**
-   * Permet de créer le composant graphique représentant une fourmi sexuée mâle et de la faire
-   * apparaitre dans la fourmilière.
+   * Permet de creer le composant graphique representant une fourmi sexuee male et de la faire
+   * apparaitre dans la fourmiliere.
    * 
-   * @param laVueDeLaFourmiliere La fourmilière dans laquelle la fourmi sexuée mâle doit apparaitre.
+   * @param laVueDeLaFourmiliere La fourmiliere dans laquelle la fourmi sexuee male doit apparaitre.
    */
   public VueFourmiMale(VueFourmiliere laVueDeLaFourmiliere) {
     super(laVueDeLaFourmiliere);

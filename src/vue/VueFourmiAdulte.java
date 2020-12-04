@@ -5,28 +5,28 @@ import java.util.Random;
 import graphicLayer.GOval;
 
 /**
- * Classe permettant de gérer les composants graphiques des fourmis adultes et de les séparer de
- * leurs modèles.
+ * Classe permettant de gerer les composants graphiques des fourmis adultes et de les separer de
+ * leurs modeles.
  * 
- * @author Clément Stoliaroff, Quentin Tassy
+ * @author Clement Stoliaroff, Quentin Tassy
  *
  */
 public abstract class VueFourmiAdulte {
   /**
-   * Cercle représentant la fourmi
+   * Cercle representant la fourmi
    */
   protected GOval composantGraphique;
 
   /**
-   * Reférence vers la représentation graphique de la fourmilière.
+   * Reference vers la representation graphique de la fourmiliere.
    */
   protected VueFourmiliere laVueDeLaFourmiliere;
 
   /**
-   * Créé la représentation graphique d'une fourmi adulte et la fait apparaitre au milieu de la
-   * fourmilière.
+   * Cree la representation graphique d'une fourmi adulte et la fait apparaitre au milieu de la
+   * fourmiliere.
    * 
-   * @param laVueDeLaFourmiliere la représentation graphique de la fourmilière dans laquelle
+   * @param laVueDeLaFourmiliere la representation graphique de la fourmiliere dans laquelle
    *        apparait la fourmi adulte.
    */
   public VueFourmiAdulte(VueFourmiliere laVueDeLaFourmiliere) {
@@ -37,23 +37,23 @@ public abstract class VueFourmiAdulte {
   }
 
   /**
-   * Permet à une fourmi de se déplacer, au hasard, en haut, en bas, à gauche ou à droite
+   * Permet a une fourmi de se deplacer, au hasard, en haut, en bas, a gauche ou a droite
    */
   public void seDeplacer() {
-    // On créé le générateur de nombre aléatoire
+    // On cree le generateur de nombre aleatoire
     Random random = new Random();
 
-    // On génère un nombre aléatoire entre 1 et 4
+    // On genere un nombre aleatoire entre 1 et 4
     int unNombreAleatoire = random.nextInt(4);
 
     if (unNombreAleatoire == 0) {
-      // Si c'est 0, on va à droite
+      // Si c'est 0, on va a droite
       int posX = this.composantGraphique.getX() + 10;
       if (this.verifierPositionX(posX)) {
         this.composantGraphique.setX(posX);
       }
     } else if (unNombreAleatoire == 1) {
-      // Si c'est 1, on va à gauche
+      // Si c'est 1, on va a gauche
       int posX = this.composantGraphique.getX() - 10;
       if (this.verifierPositionX(posX)) {
         this.composantGraphique.setX(posX);
@@ -74,10 +74,10 @@ public abstract class VueFourmiAdulte {
   }
 
   /**
-   * Vérifie si la fourmi peut se déplacer vers la gauche ou la droite sans sortir du territoire
+   * Verifie si la fourmi peut se deplacer vers la gauche ou la droite sans sortir du territoire
    * 
-   * @param pos la future position de la fourmi après son déplacement
-   * @return Vrai si la fourmi peut se déplacer sans sortir du terrain, faux sinon.
+   * @param pos la future position de la fourmi apres son deplacement
+   * @return Vrai si la fourmi peut se deplacer sans sortir du terrain, faux sinon.
    */
   public boolean verifierPositionX(int pos) {
     return (pos > 0 && pos < (this.laVueDeLaFourmiliere.getLaVueTerrain().getLargeurTerrain()
@@ -85,10 +85,10 @@ public abstract class VueFourmiAdulte {
   }
 
   /**
-   * Vérifie si la fourmi peut se déplacer vers le haut ou le bas sans sortir du territoire
+   * Verifie si la fourmi peut se deplacer vers le haut ou le bas sans sortir du territoire
    * 
-   * @param pos la future position de la fourmi après son déplacement
-   * @return Vrai si la fourmi peut se déplacer sans sortir du terrain, faux sinon.
+   * @param pos la future position de la fourmi apres son deplacement
+   * @return Vrai si la fourmi peut se deplacer sans sortir du terrain, faux sinon.
    */
   public boolean verifierPositionY(int pos) {
     return (pos > 0 && pos < (this.laVueDeLaFourmiliere.getLaVueTerrain().getHauteurTerrain()
@@ -96,7 +96,7 @@ public abstract class VueFourmiAdulte {
   }
 
   /**
-   * Fait disparaitre la représentation graphique de la fourmi
+   * Fait disparaitre la representation graphique de la fourmi
    */
   public void supprimerFourmi() {
     this.laVueDeLaFourmiliere.getLaVueTerrain().supprimerFourmi(composantGraphique);
