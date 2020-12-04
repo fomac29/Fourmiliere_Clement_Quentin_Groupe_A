@@ -34,9 +34,11 @@ public class Terrain {
   /**
    * Construit le terrain avec sa representation graphique et initialise une fourmiliere contenant
    * une reine.
+   * 
+   * @param lancerFenetre Vrai s'il ouvrier la fenetre d'application, faux sinon.
    */
-  public Terrain() {
-    this.laVueTerrain = new VueTerrain();
+  public Terrain(boolean lancerFenetre) {
+    this.laVueTerrain = new VueTerrain(lancerFenetre);
     this.laVueTerrain.ajouterTerrain();
 
     this.lesProies = new ArrayList<Proie>();

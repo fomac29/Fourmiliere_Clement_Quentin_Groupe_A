@@ -17,7 +17,7 @@ public class Simulateur {
    * Initialise le terrain, la fourmiliere, la premiere reine des fourmis et les elements graphiques
    */
   public Simulateur() {
-    this.leTerrain = new Terrain();
+    this.leTerrain = new Terrain(true);
   }
 
   /**

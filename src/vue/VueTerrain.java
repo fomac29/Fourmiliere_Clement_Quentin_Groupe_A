@@ -27,6 +27,16 @@ public class VueTerrain {
   private static final int largeurTerrain = 500;
 
   /**
+   * Hauteur par defaut de la fenetre d'application.
+   */
+  private static final int hauteurFenetreDefaut = 1000;
+
+  /**
+   * Largeur par defaut de la fenetre d'application.
+   */
+  private static final int largeurFenetreDefaut = 1000;
+
+  /**
    * La fenetre d'application qui contient le terrain.
    */
   private GSpace fenetre;
@@ -37,13 +47,21 @@ public class VueTerrain {
    */
   private GBounded terrain;
 
+  private boolean fenetreOuverte;
+
   /**
    * Cree et ouvre la fenetre d'application.
+   * 
+   * @param lancerFenetre Vrai s'il ouvrier la fenetre d'application, faux sinon.
    */
-  public VueTerrain() {
-    fenetre = new GSpace("Terrain", new Dimension(1000, 1000));
+  public VueTerrain(boolean lancerFenetre) {
+    fenetre = new GSpace("Terrain", new Dimension(hauteurFenetreDefaut, largeurFenetreDefaut));
     fenetre.setColor(Color.white);
-    fenetre.open();
+    if (lancerFenetre == true) {
+      fenetre.open();
+    }
+
+    this.fenetreOuverte = lancerFenetre;
   }
 
 
@@ -54,8 +72,8 @@ public class VueTerrain {
     terrain = new GBounded();
     terrain.setColor(Color.green);
     Random random = new Random();
-    int x = random.nextInt(this.fenetre.getWidth() - this.getLargeurTerrain());
-    int y = random.nextInt(this.fenetre.getHeight() - this.getHauteurTerrain());
+    int x = random.nextInt(this.getLargeurFenetre() - this.getLargeurTerrain());
+    int y = random.nextInt(this.getHauteurFenetre() - this.getHauteurTerrain());
     terrain.setPosition(new Point(x, y));
     terrain.setDimension(new Dimension(hauteurTerrain, largeurTerrain));
 
@@ -127,11 +145,31 @@ public class VueTerrain {
     return largeurTerrain;
   }
 
+  /**
+   * Permet de connaitre la largeur de la fenetre d'application
+   * 
+   * @return La largeur de la fenetre d'application si celle-ci est ouverte, sa hauteur par defaut
+   *         sinon
+   */
   public int getLargeurFenetre() {
-    return this.fenetre.getWidth();
+    if (this.fenetreOuverte == false) {
+      return largeurFenetreDefaut;
+    } else {
+      return this.fenetre.getWidth();
+    }
   }
 
+  /**
+   * Permet de connaitre la hauteur de la fenetre d'application
+   * 
+   * @return La hauteur de la fenetre d'application si celle-ci est ouverte, sa hauteur par defaut
+   *         sinon
+   */
   public int getHauteurFenetre() {
-    return this.fenetre.getHeight();
+    if (this.fenetreOuverte == false) {
+      return hauteurFenetreDefaut;
+    } else {
+      return this.fenetre.getHeight();
+    }
   }
 }
