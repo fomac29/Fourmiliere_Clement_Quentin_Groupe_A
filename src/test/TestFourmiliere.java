@@ -249,7 +249,7 @@ class TestFourmiliere {
     int margeErreurPourcentage = 3;
 
     // Defini le nombre de simulation a effectue
-    int nbTests = 100;
+    int nbTests = 10000;
 
     /*
      * On va compter le nombe de simulation n'arrive pas a garder leur population autours du seuil
