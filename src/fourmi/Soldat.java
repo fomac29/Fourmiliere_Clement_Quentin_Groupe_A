@@ -1,9 +1,13 @@
 package fourmi;
 
 import etape.Adulte;
-import terrain.Fourmiliere;
 import vue.VueSoldat;
 
+/**
+ * Représente une fourmi soldat
+ * 
+ * @author Clément Stoliaroff, Quentin Tassy
+ */
 public class Soldat extends Role {
 
   public Soldat(Adulte adulte) {
@@ -12,13 +16,15 @@ public class Soldat extends Role {
         this.lAdulte.getLaFourmi().getLaFourmiliere().getLaVueFourmiliere()));
   }
 
+  /**
+   * La fourmi meure si elle atteint la fin de sa vie, sinon elle se déplace aléatoirement
+   */
   @Override
   public void step() {
     this.esperanceDeVie--;
     if (esperanceDeVie == 0) {
+      this.lAdulte.getLaFourmi().getLaFourmiliere().decrementerNombreSoldats();
       this.lAdulte.mourir();
-      Fourmiliere laFourmiliere = this.lAdulte.getLaFourmi().getLaFourmiliere();
-      laFourmiliere.decrementerNombreSoldats();
     }
     else {
       this.lAdulte.deplacerComposantFourmi();

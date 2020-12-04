@@ -6,7 +6,7 @@ import terrain.Fourmiliere;
 /**
  * Troisième étape de la vie d'une foumi
  * 
- * @author Clément Stoliaroff
+ * @author Clément Stoliaroff, Quentin Tassy
  *
  */
 public class Nymphe extends Etape {
@@ -15,8 +15,14 @@ public class Nymphe extends Etape {
     this.laFourmi.getLaFourmiliere().incrementerNombreNymphes();
   }
 
+  /**
+   * Temps restant avant que la nymphe ne devienne une adulte.
+   */
   int tempsRestant = 10;
 
+  /**
+   * Décrémente le temps restant et passe à l'étape d'adulte si celui-ci est écoulé
+   */
   public void next() {
     this.tempsRestant = this.tempsRestant - 1;
     if (this.tempsRestant == 0) {

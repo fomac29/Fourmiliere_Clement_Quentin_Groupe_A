@@ -18,6 +18,6 @@ public class VueOuvrier extends VueFourmiAdulte {
    */
   public VueOuvrier(VueFourmiliere laVueDeLaFourmiliere) {
     super(laVueDeLaFourmiliere);
-    this.composantGraphique.setColor(Color.orange);
+    this.composantGraphique.setColor(Color.yellow);
   }
 }
