@@ -19,12 +19,12 @@ public class VueTerrain {
   /**
    * Hauteur du rectangle qui represente le terrain.
    */
-  private final int hauteurTerrain = 500;
+  private static final int hauteurTerrain = 500;
 
   /**
    * Largeur du rectangle qui represente le terrain.
    */
-  private final int largeurTerrain = 500;
+  private static final int largeurTerrain = 500;
 
   /**
    * La fenetre d'application qui contient le terrain.
