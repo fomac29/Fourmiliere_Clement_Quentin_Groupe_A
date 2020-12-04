@@ -58,6 +58,7 @@ public class Reine extends Femelle {
     laFourmi.getLaFourmiliere().supprimerReine();
     // La reine des fourmis est une femelle
     fourmiliere.decrementerNombreFemelles();
+    laFourmi.setLaFourmiliere(null);
     // System.out.println("Reine morte");
   }
 }
